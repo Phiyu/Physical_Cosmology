@@ -1,0 +1,250 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% --- Theme & Colors ---
+\usetheme{Madrid}
+\usecolortheme{dolphin} 
+\usefonttheme{professionalfonts}
+
+% --- Packages ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tikz}
+
+\usepackage[backend=bibtex,style=authoryear]{biblatex}
+\addbibresource{references.bib}
+
+
+% --- Metadata ---
+\title[EFT of LSS]{The Effective Field Theory of Large Scale Structure}
+% \subtitle{Precision Cosmology Beyond the Linear Regime}
+\author[Hongfei Yu]{Hongfei Yu}
+\institute[USTC]{
+    Department of Astrophysics,\\
+    School of Physical Science,\\
+    University of Science and Technology of China
+}
+\date{\today}
+
+% --- Custom Commands ---
+\newcommand{\kvec}{\vec{k}}
+\newcommand{\xvec}{\vec{x}}
+\newcommand{\deld}{\delta_D}
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% Title Slide
+% -----------------------------------------------------------------------------
+\begin{frame}
+    \titlepage
+\end{frame}
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% Introduction & Motivation
+% -----------------------------------------------------------------------------
+\section{Motivation}
+
+\begin{frame}{The Era of Precision Cosmology}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item \textbf{Success of Linear Theory:} 
+            On very large scales ($k \to 0$), standard linear perturbation theory describes the universe remarkably well (e.g., CMB).
+            
+            \item \textbf{The Frontier:} 
+            Upcoming surveys (DESI, Euclid, LSST) will probe smaller scales with unprecedented precision.
+            
+            \item \textbf{The Challenge:}
+            Linear theory breaks down at the non-linear scale:
+            $$ k_{NL} \sim 0.1 - 0.3 \, h/\text{Mpc} $$
+            Here, $\delta \sim \mathcal{O}(1)$, and loop corrections become divergent.
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % Placeholder for P(k) comparison graph
+            % Suggestion: Use Figure 1 from Philcox notes or Senatore's P_theory/P_NL plot
+            % \framebox{\parbox{0.9\textwidth}{\centering \vspace{3cm} \textbf{[Insert Plot: P(k) Linear vs Non-linear]} \\ Shows breakdown at $k \sim 0.1$ \\ \vspace{3cm}}}
+            \includegraphics[width = 1\textwidth]{fig1.png}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Why not just use N-body Simulations?}
+    Simulations are powerful, but they have limitations (Senatore):
+    \vspace{0.5cm}
+    \begin{itemize}
+        \item \textbf{Computational Cost:} Running high-resolution simulations for every point in parameter space is prohibitive.
+        \item \textbf{Systematic Errors:} Simulations have their own percent-level inaccuracies.
+        \item \textbf{Baryonic Physics:} We cannot reliably simulate complex baryonic effects (star formation, feedback) from first principles on cosmological scales.
+        \item \textbf{Understanding:} We want an analytical \textit{theory}, not just a numerical black box.
+    \end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% Standard Perturbation Theory
+% -----------------------------------------------------------------------------
+\section{Standard Perturbation Theory (SPT)}
+
+\begin{frame}{Standard Perturbation Theory (SPT)}
+    SPT treats dark matter as a \textbf{perfect pressureless fluid} at all scales.
+    
+    \begin{block}{The Equations (Euler \& Continuity)}
+        $$ \dot{\delta} + \nabla \cdot [(1+\delta)\vec{v}] = 0 $$
+        $$ \dot{\vec{v}} + \mathcal{H}\vec{v} + (\vec{v}\cdot\nabla)\vec{v} = -\nabla \Phi $$
+    \end{block}
+    
+    \begin{itemize}
+        \item Expanded iteratively: $\delta = \delta^{(1)} + \delta^{(2)} + \delta^{(3)} + \dots$
+        \item \textbf{The Problem:} Loop integrals integrate over \textit{all} momenta, including $k \to \infty$.
+        \item This assumes the fluid is perfect even at the scale of galaxies and stars, which is physically incorrect (shell crossing, virialization).
+    \end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% The EFT Philosophy
+% -----------------------------------------------------------------------------
+\section{The EFT Philosophy}
+
+\begin{frame}{The Dielectric Analogy}
+    \begin{columns}
+        \column{0.5\textwidth}
+        How do we describe light propagating through a material?
+        \begin{itemize}
+            \item \textbf{Microscopic View:} Trillions of atoms, electrons, complex QM interactions.
+            \item \textbf{Macroscopic View:} We don't solve the Schrödinger equation for every atom!
+            \item We use \textbf{Effective Parameters}: Polarizability $\to$ Dielectric constant $\epsilon$.
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % Placeholder for Dielectric analogy image from Senatore slides
+            % \framebox{\parbox{0.8\textwidth}{\centering \vspace{2cm} \textbf{[Insert Image: Dielectric Material]} \\ Atoms vs Smooth Medium \\ \vspace{2cm}}}
+            \includegraphics[width = 0.8\textwidth]{fig2.png}
+        \end{figure}
+    \end{columns}
+    \vspace{0.5cm}
+    \textbf{The Lesson:} We can describe large-scale physics without knowing the details of small-scale non-linearities (galaxy formation), provided we introduce effective coefficients.
+\end{frame}
+
+\begin{frame}{Formalism: Smoothing the Universe (Baumann)}
+    We split the fields into long-wavelength (IR) and short-wavelength (UV) modes using a smoothing scale $\Lambda$:
+    $$ \delta_L(\xvec) = \int d^3y \, W_\Lambda(|\xvec-\vec{y}|) \delta(\vec{y}) $$
+    
+    Applying this to the Euler equation generates a new term due to non-linearity:
+    $$ [\rho v_i v_j]_\Lambda \neq \rho_L v_{Li} v_{Lj} $$
+    
+    \begin{alertblock}{The Effective Stress Tensor}
+        $$ \dot{v}_{Li} + \mathcal{H}v_{Li} + \dots = -\nabla \Phi_L \alert{- \frac{1}{\rho_L} \partial^j [\tau_{ij}]_\Lambda} $$
+    \end{alertblock}
+    $\tau_{ij}$ encodes the backreaction of small-scale physics (velocity dispersion, virialization) on large scales.
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% The Effective Stress Tensor
+% -----------------------------------------------------------------------------
+\section{Constructing the EFT}
+
+\begin{frame}{Parameterizing the Unknown: The Stress Tensor}
+    Since we cannot compute $\tau_{ij}$ from first principles (UV physics is non-linear), we expand it in terms of long-wavelength operators allowed by symmetries (Equivalence Principle):
+    
+    $$ \langle \tau_{ij} \rangle \sim \underbrace{p_b \delta_{ij}}_{\text{Background Pressure}} + \underbrace{c_s^2 \delta_L \delta_{ij}}_{\text{Sound Speed}} - \underbrace{\frac{c_{vis}^2}{H} \partial_i v_{Lj}}_{\text{Viscosity}} + \dots $$
+    
+    \begin{itemize}
+        \item \textbf{$c_s^2$ (Effective Sound Speed):} Represents the resistance of small-scale structures to gravitational collapse.
+        \item \textbf{Renormalization:} This term leads to a counterterm in the power spectrum:
+        $$ P_{EFT}(k) = P_{linear} + P_{1-loop}^{SPT} \alert{- 2c_s^2 k^2 P_{linear}} $$
+        \item $c_s^2$ is a \textbf{free parameter} measured from data or simulations.
+    \end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% Results
+% -----------------------------------------------------------------------------
+\section{Results \& Success}
+
+\begin{frame}{EFT vs. SPT vs. N-body Simulations}
+    \begin{columns}
+        \column{0.65\textwidth}
+        \begin{figure}
+            \centering
+            % Placeholder for the key result plot (e.g., Senatore's plot showing 1% accuracy)
+            % \framebox{\parbox{0.95\textwidth}{\centering \vspace{4cm} \textbf{[Insert Image: $P_{theory}/P_{NL}$]} \\ Comparing SPT, EFT 1-loop, EFT 2-loop \\ \vspace{4cm}}}
+            \includegraphics[width = 1.0\textwidth]{fig3.png}
+        \end{figure}
+        
+        \column{0.35\textwidth}
+        \textbf{Key Findings:}
+        \begin{itemize}
+            \item SPT fails at $k \sim 0.1 \, h/\text{Mpc}$.
+            \item \textbf{1-loop EFT} extends reach to $k \sim 0.3$.
+            \item \textbf{2-loop EFT} reaches $k \sim 0.6$ with $\sim 1\%$ precision.
+            \item We gain access to $\sim 100\times$ more modes than linear theory!
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{IR-Resummation: Handling Bulk Flows}
+    \begin{itemize}
+        \item \textbf{The Problem:} Large-scale bulk flows displace matter by $\sim 10 \, \text{Mpc}$. This "smears" the Baryon Acoustic Oscillations (BAO) peak.
+        \item Standard Eulerian perturbation theory cannot handle these large displacements (convergence issues).
+        \item \textbf{EFT Solution:} We can resum these infrared (IR) modes non-perturbatively.
+        \item \textbf{Result:} The EFT correctly predicts the damping of the BAO oscillations, matching observations without ad-hoc smoothing.
+    \end{itemize}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+% Conclusion
+% -----------------------------------------------------------------------------
+\section{Conclusion}
+
+\begin{frame}{Summary \& Outlook}
+    \begin{itemize}
+        \item \textbf{A Rigorous Theory:} EFTofLSS is not a model; it is a rigorous perturbation theory based on the hierarchy of scales ($k \ll k_{NL}$).
+        
+        \item \textbf{UV Physics Encapsulated:} The complex formation of halos and galaxies (and baryonic physics) is encapsulated in effective coefficients (like $c_s^2$), which we fit to data.
+        
+        \item \textbf{High Precision:} It allows us to analytically compute the power spectrum to much higher $k$, unlocking vast amounts of cosmological information from future surveys.
+        
+        \item \textbf{Outlook:} 
+        \begin{itemize}
+            \item Application to Redshift Space Distortions (RSD).
+            \item Biased tracers (Galaxies/Halos).
+            \item Constraining Primordial Non-Gaussianity.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Reading Material}
+    \textbf{Core References for this Presentation:}
+    
+    \vspace{1em}
+    
+    The theoretical framework discussed today relies heavily on the foundational lectures by Leonardo Senatore, which introduce the effective fluid description derived from the Boltzmann equation \parencite{senatore_lectures}.
+    
+    \vspace{1em}
+    
+    For practical applications, including IR-resummation and data comparison, we follow the comprehensive introduction provided by Oliver Philcox \parencite{philcox_intro}.
+    
+    \vspace{2em}
+
+    \printbibliography
+\end{frame}
+
+\begin{frame}[plain]
+    \centering
+    \Huge \textbf{Thank You!} \\
+\end{frame}
+
+
+
+\end{document}
