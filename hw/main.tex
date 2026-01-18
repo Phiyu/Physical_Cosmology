@@ -1,0 +1,90 @@
+\documentclass[12pt, letterpaper]{article}
+
+%=================================================
+% PACKAGES
+%=================================================
+\usepackage{amsmath}      % For advanced math environments and symbols
+\usepackage{amssymb}      % For more math symbols
+\usepackage{geometry}     % For setting page margins
+\usepackage{graphicx}     % To include images if needed
+\usepackage{hyperref}     % For clickable links (optional)
+\usepackage{physics}
+\everymath{\displaystyle} % Ensures all math is displayed in display style
+
+
+
+\newcommand{\pp}{\partial}
+\newcommand{\ag}[1]{\langle #1 \rangle}
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\mi}{\mathrm{i}}
+
+% Adds color to links, which can be nice for drafts
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage[most]{tcolorbox} 
+\newtcolorbox{solution}{
+    enhanced,
+    title={\it \textbf{Solution:}},             % The title of the box
+    colback=blue!5!white,                % The background color
+    colframe=blue!60!black,              % The frame color
+    fonttitle=\bfseries,                 % Font for the title
+    coltitle=black,                      % Color of the title text
+    boxrule=1pt,                         % Thickness of the frame
+    arc=4mm,                             % Radius of the rounded corners
+    outer arc=4mm,
+    attach boxed title to top left={     % Positioning of the title box
+        xshift=10mm,
+        yshift=-4mm
+    },
+    boxed title style={                  % Style of the title box
+        colback=blue!20!white,
+        arc=4mm,
+        outer arc=4mm,
+    },
+    before upper={\vspace{1em}\noindent},
+    breakable=true
+}
+
+\usepackage{listings}     % 修正：原来的 listlstings 是错误的
+
+% 代码块格式设置
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    breakatwhitespace=true,
+    numbers=left,
+    numberstyle=\footnotesize\color{darkgray},
+    keywordstyle=\color[RGB]{40,40,255},
+    commentstyle=\color[RGB]{0,96,96},
+    stringstyle=\color[RGB]{128,0,0},
+    showstringspaces=false,
+    tabsize=4,
+    backgroundcolor=\color[RGB]{245,245,244},
+    language=python
+}
+
+
+%=================================================
+% PAGE LAYOUT & HEADER
+%=================================================
+% Set 1-inch margins on all sides
+\geometry{
+    letterpaper,
+    margin=1in
+}
+
+
+% Simple header with Course Name on the left and HW Set on the right
+\pagestyle{myheadings}
+\markboth{ASTR6403P: Physical Cosmology}{Homework Solution}
+
+
+%=================================================
+% PUT THE tex FILE CONTENTS HERE
+%=================================================
+
+\input{contents/hw5.tex}
