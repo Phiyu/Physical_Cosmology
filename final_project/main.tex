@@ -1,0 +1,161 @@
+\documentclass[twocolumn, amsmath, amssymb, aps, prd, nofootinbib]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8} % Required for Chinese characters
+
+\begin{document}
+
+\begin{CJK*}{UTF8}{gbsn} % Start Chinese character support
+\title{Effect of Dark Energy on the CMB Spectrum}
+
+\author{Hongfei Yu (于洪飞)}
+\affiliation{Department of Astronomy, University of Science and Technology of China, Hefei, Anhui 230026, China}
+
+\date{\today}
+
+\begin{abstract}
+This work is the final project for the course {\tt ASTR6403P: Physical Cosmology} taught by Prof. Wenjuan Fang at the University of Science and Technology of China in Fall 2025.
+
+In this work, we investigate the influence of varying dark energy models on the Cosmic Microwave Background (CMB) temperature anisotropy power spectrum. Using numerical Boltzmann solvers, we evolve linear perturbation equations to study the sensitivity of CMB observables to the dark energy equation of state $w$. We compare the standard $\Lambda$CDM model ($w=-1$) against alternative scenarios ($w=-0.5$ and $w=-1.5$) to quantify differences in the resulting anisotropiy power spectra and discuss the underlying physical mechanisms.
+\end{abstract}
+
+\keywords{cosmology-theory; dark energy; CMB;}
+
+\maketitle
+
+\section{Introduction}
+The Cosmic Microwave Background (CMB) provides a powerful probe of the early Universe and its subsequent evolution~\cite{Dodelson}. While the standard $\Lambda$CDM model successfully describes many observations, the nature of dark energy remains one of the most significant questions in modern cosmology. Especially, the recent result of DESI DR2~\cite{DESI} has provided stronger signal of dynamical dark energy.
+
+Numerical codes such as CAMB (Code for Anisotropies in the Microwave Background)~\cite{CAMB} and CLASS (Cosmic Linear Anisotropy Solving System)~\cite{CLASS} allow for the precise calculation of temperature anisotropies by solving the coupled Einstein-Boltzmann linear perturbation equations. In this way ,we can use these tools to explore how different dark energy models with different equation of state $w$ affect the CMB power spectrum.
+
+This work is organized as follows: In Section \ref{sec2}, we review the relevant linear perturbation theory and the computation of the CMB power spectrum. Section \ref{sec3} describes our methodology, including the choice of cosmological parameters and dark energy models. In Section \ref{sec4}, we present our results, comparing the CMB power spectra for different dark energy equations of state and discussing the physical implications. Finally, we summarize our findings in Section \ref{sec5}.
+
+\section{Review of Linear Perturbation Theory}\label{sec2}
+
+The Cosmic Microwave Background (CMB) temperature anisotropies provide a snapshot of the primordial perturbations generated during inflation, processed by the physics of the baryon-photon fluid. All theoretical foundations in this section follow \textit{Modern Cosmology} by Scott Dodelson and Fabian Schmidt~\cite{Dodelson}.
+
+We work in the conformal Newtonian gauge, where the perturbed Friedmann-Robertson-Walker metric is:
+\begin{equation}
+ds^2 = a^2(\eta)\left[-(1+2\Psi)d\eta^2 + (1-2\Phi)\delta_{ij}dx^idx^j\right],
+\end{equation}
+where $\eta$ is conformal time, $a(\eta)$ is the scale factor, and $\Psi$ and $\Phi$ are the gravitational potentials.
+
+\subsection{Einstein and Boltzmann Equations}
+
+The evolution of metric perturbations is governed by the Einstein equations. On large scales, the potentials are related to the conserved curvature perturbation $\mathcal{R}$ set during inflation; specifically, in the matter-dominated era, $\Phi = (3/5)\mathcal{R}$. 
+
+The photon distribution function perturbation $\Theta(\mathbf{k}, \hat{n}, \eta)$ evolves according to the Boltzmann equation:
+\begin{equation}
+\Theta' + ik\mu\Theta = -\Phi' - ik\mu\Psi - \tau' \left[\Theta_0 - \Theta + \mu u_{\rm b} - \frac{1}{2}\mathcal{P}_2(\mu)\Pi\right],
+\end{equation}
+where $\mu$ is the cosine of the angle between the wavevector and photon direction, $\tau'$ is the scattering rate (differential optical depth), $u_{\rm b}$ is the baryon velocity, and $\Pi$ is the polarization tensor. 
+
+Before recombination, the high scattering rate ($\tau' \gg 1$) tightly couples photons and baryons into a single fluid. In this limit, all multipoles $l > 1$ are suppressed, and the system reduces to a forced harmonic oscillator equation for the monopole $\Theta_0$:
+\begin{equation}
+\Theta_0'' + \frac{a'}{a}\frac{R}{1+R}\Theta_0' + k^2c_s^2\Theta_0 = F(k,\eta),
+\end{equation}
+where $R = 3\rho_b/4\rho_\gamma$ is the baryon-to-photon ratio and $c_s = [3(1+R)]^{-1/2}$ is the sound speed.
+
+\subsection{Temperature Anisotropies and Power Spectrum}
+
+The observed temperature field is expanded in spherical harmonics $Y_{lm}(\hat{p})$ with coefficients $a_{lm}$. These coefficients are Gaussian random variables with mean zero and variance $C_l$. The power spectrum is calculated by integrating the transfer functions $\mathcal{T}_l(k)$ over all Fourier modes:
+\begin{equation}
+C_l = \frac{2}{\pi}\int_0^\infty dk\, k^2 P_{\mathcal{R}}(k) |\mathcal{T}_l(k)|^2.
+\end{equation}
+
+The transfer function $\mathcal{T}_l(k) = \Theta_l(k, \eta_0)/\mathcal{R}(k)$ is computed today using the line-of-sight integral approach:
+\begin{equation}
+\Theta_l(k, \eta_0) = \int_0^{\eta_0} d\eta\, S(k, \eta) j_l[k(\eta_0-\eta)],
+\end{equation}
+where $S(k,\eta)$ is the source function. In the visibility function $g(\eta) = -\tau' e^{-\tau}$ approximation, this simplifies to:
+\begin{equation}
+\Theta_l(k, \eta_0) \simeq [\Theta_0 + \Psi] j_l(k\chi_*) + 3\Theta_1 \left(j_{l-1} - \frac{(l+1)j_l}{k\chi_*}\right) + \text{ISW},
+\label{th_res}
+\end{equation}
+where $\chi_* = \eta_0 - \eta_*$ is the comoving distance to the last-scattering surface.
+
+\subsection{Dark Energy Effects}
+
+Dark energy, characterized by an equation of state $w$, modifies the CMB spectrum through:
+\begin{enumerate}
+\item \textit{Distance to Last Scattering}: Changes in $w$ alter the angular diameter distance $\chi_*$, shifting the positions of the acoustic peaks (the primary peaks occur at $l_{pk} \simeq k_{pk}\eta_0$).
+\item \textit{Integrated Sachs-Wolfe (ISW) Effect}: Dark energy causes gravitational potentials to decay at late times ($z \lesssim 1$). This evolution sources additional anisotropies via the integral $\int d\eta e^{-\tau}(\Psi' - \Phi')$, primarily boosting the power at low multipoles ($l \lesssim 30$).
+\item \textit{Growth and Normalization}: Dark energy influences the background expansion rate, indirectly affecting the time-dependency of the driving force $F$ and the overall normalization of the perturbations.
+\end{enumerate}
+
+\section{Methodology}
+\label{sec3}
+We adopt the best-fit flat $\Lambda$CDM model parameters favored by the Planck satellite~\cite{Planck2014}: $\Omega_m h^2 = 0.143$, $\Omega_b h^2 = 0.0221$, $\ln(10^{10}A_s) = 3.04$, $n_s = 0.963$, $\tau = 0.052$, and $h = 0.669$. 
+
+The dark energy component is modeled with an equation of state $w$. We perform three separate runs to compare the following cases:
+\begin{enumerate}
+    \item Standard cosmological constant: $w = -1$.
+    \item Quintessence-like dark energy: $w = -0.5$.
+    \item Phantom dark energy: $w = -1.5$.
+\end{enumerate}
+
+\section{Results and Discussion}
+\label{sec4}
+The resulting CMB temperature power spectra (Fig.~\ref{fig:cmb_spectra}) exhibit distinct variations as the dark energy equation of state $w$ is modified. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{cmb_power_spectrum_comparison.png}
+    \caption{CMB temperature anisotropy power spectra for different dark energy equations of state: $w=-1$ (black), $w=-0.5$ (blue), and $w=-1.5$ (red). The acoustic peak positions and low-$\ell$ ISW enhancements vary significantly with $w$.}
+    \label{fig:cmb_spectra}
+\end{figure}
+
+\subsection{Acoustic Peak Shifts}
+As shown in Table~\ref{tab:peak_positions}, deviations from $w=-1$ significantly shift the multipole positions of the acoustic peaks. This is a purely geometrical effect: because we held the physical densities ($\Omega_m h^2, \Omega_b h^2$) constant, the physical sound horizon at recombination remains unchanged. However, the angular diameter distance $\chi_*$ to the last scattering surface is highly sensitive to the late-time expansion history governed by $w$. A phantom model ($w=-1.5$) accelerates the expansion more rapidly than $\Lambda$CDM, resulting in a reduced distance and a shift of the peak pattern toward larger angular scales (lower $\ell$).
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        \hline
+        Peak & $w=-1$ & $w=-0.5$ & $w=-1.5$ \\
+        \hline
+        1st & 220 & 250 & 190 \\
+        2nd & 540 & 580 & 470 \\
+        3rd & 800 & 860 & 700 \\
+        \hline
+        $\chi_*$ (Mpc) & 12.71 & 11.81 & 13.08 \\
+        \hline
+    \end{tabular}
+    \caption{Multipole positions of the first three acoustic peaks for different dark energy equations of state.}
+    \label{tab:peak_positions}
+\end{table}
+
+\subsection{The ISW Signature}
+Figure~\ref{fig:cmb_low_ell_ISW} highlights the impact of dark energy on the late-time Integrated Sachs-Wolfe (ISW) effect. As dark energy begins to dominate, gravitational potentials $\Phi$ and $\Psi$ are no longer constant and begin to decay. This time-evolution sources additional temperature anisotropies at low multipoles ($l \lesssim 30$). Our results demonstrate that the magnitude of this boost is a direct probe of the dynamical nature of dark energy, with the $w=-0.5$ model showing the most pronounced deviation from the baseline $\Lambda$CDM.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{cmb_low_ell_ISW.png}
+    \caption{Zoom-in on the low multipole region ($\ell < 50$) of the CMB power spectrum, illustrating the enhanced ISW effect for different dark energy equations of state. The $w=-0.5$ model exhibits the largest increase in power at low $\ell$.}
+    \label{fig:cmb_low_ell_ISW}
+\end{figure}
+
+\section{Conclusions}
+\label{sec5}
+In this project, we have investigated the role of dark energy in shaping the CMB temperature anisotropy power spectrum. By varying the equation of state $w$ while maintaining the best-fit Planck 2014 parameters for the early universe, we demonstrated that dark energy leaves a characteristic imprint on both the geometry of the acoustic peaks and the large-scale ISW effect. These results underscore the importance of CMB observations in constraining the properties of the dark sector and testing the consistency of the $\Lambda$CDM framework against emerging signals of dynamical dark energy, such as those recently reported by DESI.
+
+\begin{acknowledgments}
+Thanks for Prof. Wenjuan Fang for teaching the course {\tt ASTR6403P: Physical Cosmology} and providing guidance on this final project. This work made use of the CAMB~\cite{CAMB} codes for computing the CMB power spectra. Also thanks to Artificial Intelligence tools {\tt Gemini3} and {\tt Claude Haiku 4.5} for assisting in code debugging and LaTeX formatting.
+
+The code used in this work is available in \href{https://github.com/Phiyu/Physical_Cosmology}{\tt https://github.com/Phiyu/Physical\_Cosmology}.
+\end{acknowledgments}
+
+\begin{thebibliography}{99}
+\bibitem{DESI}Karim, M. A., Aguilar, J., Ahlen, S., Alam, S., Allen, L., Prieto, C. A., ... \& Levi, M. E. (2025). DESI DR2 results. II. Measurements of baryon acoustic oscillations and cosmological constraints. Physical Review D, 112(8).
+\bibitem{Dodelson} S. Dodelson, \textit{Modern Cosmology}, Academic Press (2003).
+\bibitem{Planck2014} Planck Collaboration, ``Planck 2013 Results. XVI. Cosmological Parameters,'' \textit{Astronomy \& Astrophysics}, 571, A16 (2014).
+\bibitem{CAMB} Lewis, A., \& Challinor, A. (2011). Camb: Code for anisotropies in the microwave background. Astrophysics source code library, ascl-1102.
+\bibitem{CLASS} Lesgourgues, J. (2011). The cosmic linear anisotropy solving system (CLASS) I: Overview. arXiv preprint arXiv:1104.2932.
+\end{thebibliography}
+
+\end{CJK*} % End Chinese character support
+\end{document}
