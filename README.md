@@ -28,11 +28,7 @@ The files in this repo are as follow:
 │   ├── hw4.png
 │   ├── hw5.ipynb
 │   ├── hw5q3.png
-│   ├── main.aux
-│   ├── main.log
-│   ├── main.out
 │   ├── main.pdf
-│   ├── main.synctex.gz
 │   ├── main.tex
 │   ├── res
 │   │   ├── PhyCosmoHW1.pdf
@@ -49,13 +45,6 @@ The files in this repo are as follow:
 │   ├── main-blx.bib
 │   ├── main.pdf
 │   ├── main.tex
-│   ├── ref
-│   │   ├── Baumann.pdf
-│   │   ├── PT.pdf
-│   │   ├── Senatore_Lectures_on_EFTofLSS_v2.pdf
-│   │   ├── eft_intro.pdf
-│   │   ├── eft_talk.pdf
-│   │   └── senatore.pdf
 │   └── references.bib
 └── Modern Cosmology, 2nd edition【Scott Dodelson】.pdf
 ```
