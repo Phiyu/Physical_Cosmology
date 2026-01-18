@@ -1,0 +1,211 @@
+\begin{document}
+
+% --- TITLE BLOCK ---
+\noindent
+\begin{tabular}{@{}l}
+    \textbf{\Large ASTR6403P: Physical Cosmology} \\
+    \Large Homework Set 3 \\
+\end{tabular}
+\hfill % Pushes the following content to the right
+\begin{tabular}{@{}l}
+    \textbf{Name:} {\it Hongfei Yu} \\
+    \textbf{ID:} PB23020640 \\
+    \textbf{Date:} \today \\
+\end{tabular}
+
+% A horizontal line to separate the header from the content
+\vspace{0.5cm}
+\hrule
+\vspace{1cm}
+
+
+%=================================================
+% HOMEWORK QUESTIONS
+%=================================================
+
+\section*{Question 1}
+Show that the temperature of non-relativistic matter scales as $a^{-2}$ in the absence of interactions. Start from the zero-order part of the Boltzmann equation for collisionless massive particles (check Sec. 3.3.4 of Modern Cosmology V2), and assume a form $f\propto e^{-E/T} = e^{-p^2/2mT}$.
+\begin{solution}
+    The zero-order Boltzmann equation for collisionless massive particles is given by:
+    \[
+        \frac{\partial f}{\partial t} - H p \frac{\partial f}{\partial p} = 0,
+    \]
+    where $H$ is the Hubble parameter. Assuming the distribution function has the form $f \propto e^{-E/T} = e^{-p^2/2mT}$, we can compute the partial derivatives:
+    \[
+        \frac{\partial f}{\partial t} = f \frac{p^2}{2mT^2} \frac{dT}{dt}, \quad \frac{\partial f}{\partial p} = -f \frac{p}{mT}.
+    \]
+    Substituting these into the Boltzmann equation, we have:
+    \[
+        f \frac{p^2}{2mT^2} \frac{dT}{dt} + H p \left( f \frac{p}{mT} \right) = 0.
+    \]
+    Simplifying, we get:
+    \[
+        \frac{dT}{dt} = -2 H T.
+    \]
+    Since $H = \frac{\dot{a}}{a}$, we can rewrite this as:
+    \[
+        \frac{dT}{dt} = -2 \frac{\dot{a}}{a} T.
+    \]
+    which leads to:
+    \[
+        T \propto a^{-2}.
+    \]
+\end{solution}
+
+\hrule
+\section*{Question 2}
+Estimate the typical thermal velocity of a dark matter particle with mass equal to $100 \;\text{GeV}$ when photon temperature $T$ is $1\;\text{eV}$ and when it is equal to $2.7\;\text{K}$. Note $T_{\rm DM}\propto a^{-2},$ while $T\propto a^{-1}$, so $T_{\rm DM}\propto T^2$. The normalization can be set by requiring $T_{\rm DM} = T$ when $T_{\rm DM}$ is equal to the dark matter mass.
+
+\begin{solution}
+    We can firstly consider the normalization condition:
+    \[
+        T_{\rm DM} = T \quad \text{when} \quad T_{\rm DM} = m_{\rm DM} \Longrightarrow T_{\rm DM} = \dfrac{T^2}{m_{\rm DM}}.
+    \]
+    and for non-relativistic particles, the typical thermal velocity is given by:
+    \[
+        \dfrac{1}{2}mv^2 = \dfrac{3}{2}T\Longrightarrow v = \sqrt{\dfrac{3T}{m}}.
+    \]
+    thus we have:
+    \[
+        v_{\rm DM} = \sqrt{\dfrac{3T_{\rm DM}}{m_{\rm DM}}} = \sqrt{\dfrac{3T^2}{m_{\rm DM}^2}} = \dfrac{T}{m_{\rm DM}}\sqrt{3}.
+    \]
+    Now we can calculate the typical thermal velocity at different photon temperatures:
+    \begin{itemize}
+        \item When $T = 1\;\text{eV}$:
+        \[
+            v_{\rm DM} = \dfrac{1\;\text{eV}}{100\;\text{GeV}}\sqrt{3} = \dfrac{1}{10^{11}}\sqrt{3}c \approx 5.2 \times 10^{-3} \text{ m/s}.
+        \]
+        \item When $T = 2.7\;\text{K} \approx 2.33 \times 10^{-4}\;\text{eV}$:
+        \[
+            v_{\rm DM} = \dfrac{2.33 \times 10^{-4}\;\text{eV}}{100\;\text{GeV}}\sqrt{3} = \dfrac{2.33 \times 10^{-4}}{10^{11}}\sqrt{3}c \approx 1.2 \times 10^{-7} \text{ m/s}.
+        \]
+    \end{itemize}
+\end{solution}
+
+
+\hrule
+\section*{Question 3}
+Consider the effect of a massive neutrino on the evolution equations.
+\begin{enumerate}
+    \item[(a)] Start from the Boltzmann equation for a massive particle that we derived in class, turn it into an equation for $\mathcal{N}_\nu$, the perturbation to the massive neutrino distribution function. Use the fact that to first order the neutrino distribution function is $f_\nu = f_\nu^{(0)} + \frac{\partial f_\nu^{(0)}}{\partial \ln q} \mathcal{N}_\nu$, where $f_\nu^{(0)} = [e^{E/T_\nu} + 1]^{-1}$. Express the final equation in Fourier space using conformal time as the evolution variable.
+
+    % \textit{Solution:}
+    % Your solution for part (a) here.
+
+    \vspace{0.5cm}
+    \item[(b)] Consider the following two scenarios. Each has energy density today equal to the critical density divided up between only two components: a cold dark matter and a neutrino. The neutrino in each case has the standard abundance and temperature. The only difference between the two scenarios is in one the neutrino is massless while in the other it has a mass of $0.06$ eV. Plot the energy density as a function of scale factor in each of these scenarios. Note they should agree very early on and very late.
+
+    % \textit{Solution:}
+    % Your solution for part (b) here.
+\end{enumerate}
+\begin{solution}
+\begin{itemize}
+    \item [(a)] The Boltzmann equation in conformal time $a\dd \tau =  \dd t$ is given by:
+    \[
+        \dfrac{\dd f}{\dd \tau} = \dfrac{\pp f}{\pp \tau} + \dfrac{q}{\epsilon}\hat{n}^i \dfrac{\pp f}{\pp x^i} -\left[\mathcal{H}(t)+a\dot{\Phi}+\dfrac{\epsilon}{q}\hat{n}^i\dfrac{\pp\Psi}{\pp x^i}\right]q\dfrac{\pp f}{\pp q}= 0.
+    \]
+    where $\epsilon = aE = \sqrt{q^2 + a^2 m^2}$ and $\mathcal{H} = aH = \dfrac{1}{a}\dfrac{\dd a}{\dd \tau}$. Substituting $f_\nu = f_\nu^{(0)} + \frac{\partial f_\nu^{(0)}}{\partial \ln q} \mathcal{N}_\nu$ into the Boltzmann equation and keeping only first order terms, we have:
+    \[
+        \dfrac{\pp f_\nu ^{(0)}}{\pp \ln q}\dot{\mathcal{N}_\nu}+\dfrac{q}{\epsilon} (\hat{\boldsymbol{n}}\cdot\nabla \mathcal{N}_\nu)\dfrac{\pp f_\nu ^{(0)}}{\pp \ln q} -\left[\mathcal{H} + a\dot{\Phi} + \dfrac{\epsilon}{q} (\hat{\boldsymbol{n}}\cdot\nabla \Psi)\right] \dfrac{\pp f_\nu ^{(0)}}{\pp \ln q} = 0.
+    \]
+    In Fourier space, supposing $k\mu = \vec{k}\cdot\hat{\boldsymbol{n}}$, we have:
+    \[
+        \dot{\mathcal{N}_\nu} + i \dfrac{q}{\epsilon} k \mu \mathcal{N}_\nu = \mathcal{H} + a\dot{\Phi} - i \dfrac{\epsilon}{q} k \mu \Psi.
+    \]
+
+    \item [(b)] To plot the energy density as a function of scale factor for both scenarios, we can use the following expressions for the energy density of cold dark matter and neutrinos:
+    \[
+        \rho_{\rm CDM}(a) = \rho_{\rm CDM,0} a^{-3},
+    \]
+    \[
+        \rho_{\nu}(a) = \dfrac{g_{\nu}}{(2\pi)^3}\int \dd^3 q \; E f_\nu(q,a),
+    \]
+    here I decided to use numerical integration to compute the neutrino energy density for both massless and massive cases so I save the integral, with simplified by $f_\nu = f_{\rm FD,\nu}$:
+    \[
+        \rho_{\nu}(a) = \dfrac{A}{a^4}\int_0^\infty \dd x\; x^2 \sqrt{x^2 + \left(\dfrac{am_\nu}{T_{\nu,0}}\right)^2} \dfrac{1}{e^x + 1} \equiv \rho_{\nu,0}{a^{4}}I(a),
+    \]
+    where $x = \dfrac{q}{T}$, $T_{\nu, 0} = 1.95\;\text{K}$. And the constant $A$ can be calculated using $m_{\nu} = 0$ as $A = \rho_{\nu,0}\Big/ \int_0^\infty \dd x\; \dfrac{x^3}{e^x+1}$.
+    
+    So the energy density of the two scenarios are:
+    \begin{itemize}
+        \item scenario 1:$\rho_1(a)/\rho_{\rm cr} = \Omega_{\rm CDM,1}a^{-3} + \Omega_{\nu}a^{-4}$;
+        \item scenario 2:$\rho_1(a)/\rho_{\rm cr} = \Omega_{\rm CDM,2}a^{-3} + \Omega_{\nu}a^{-4} I(a)$.
+    \end{itemize}
+\end{itemize}
+
+
+    
+
+
+\end{solution}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{hw3q3.png} 
+    \caption{Energy density evolution and ratio between scenario 2 and 1.}
+    \label{fig:fig1}
+\end{figure}
+\appendix
+\section{ Code for Question 3}
+\begin{lstlisting}
+import numpy as np
+from scipy import integrate
+import matplotlib.pyplot as plt
+plt.style.use('default')
+
+Omega_nu = 1e-4 # approx
+rho_cr = 1.88e-29 / 0.67 / 0.67 # g/cm^3
+m_nu = 0.06 # eV
+T_nu = 1.7e-4 # eV
+
+MIN = 1e-10
+
+C = m_nu/T_nu
+
+
+def integrand(x, a):
+    sqrt = np.sqrt(x*x + C*C*a*a)
+    return x*x*sqrt*np.exp(-x)/(np.exp(-x) + 1)
+
+def inte_res(a):
+    res, _ = integrate.quad(integrand, 0, np.inf, args=(a,), epsabs=1e-8, epsrel=1e-8, limit=200)
+    return res
+
+def inte_res_array(a_vals):
+    a_vals = np.atleast_1d(a_vals)
+    return np.array([inte_res(a) for a in a_vals])
+
+Omega_CDM1 = 1 - Omega_nu
+Omega_CDM2 = 1 - Omega_nu * inte_res(1) / inte_res(0)
+
+
+a_arr = np.linspace(MIN, 1, 500)
+
+y1 = rho_cr * (Omega_CDM1 * pow(a_arr, -3) + Omega_nu * pow(a_arr, -4))
+y2 = rho_cr * (Omega_CDM2 * pow(a_arr, -3) + Omega_nu * inte_res_array(a_arr) * pow(a_arr, -4) / inte_res(0))
+
+
+fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(10, 8),gridspec_kw={'height_ratios':[3, 1]})
+
+ax1.loglog(a_arr, y1, 'b-', label='Scenario 1', linewidth=2)
+ax1.loglog(a_arr, y2, 'r-', label='Scenario 2', linewidth=2)
+ax1.set_ylabel('Energy density (g/cm^3)')
+ax1.grid(True, which='both', ls=':')
+ax1.legend()
+ax1.set_xlim(MIN, 1)
+
+with np.errstate(divide='ignore', invalid='ignore'):
+    ratio = y2 / y1
+mask = np.isfinite(ratio)
+
+ax2.set_xscale('log')
+ax2.plot(a_arr[mask], ratio[mask], 'k-')
+ax2.axhline(1.0, color='grey', ls='--', lw=1)
+ax2.set_xlabel('Scale factor $a$')
+ax2.set_ylabel('Ratio (scenario 2 / scenario 1)')
+ax2.grid(True, which='both', ls=':')
+
+plt.tight_layout()
+plt.show()
+\end{lstlisting}
+
+\end{document}

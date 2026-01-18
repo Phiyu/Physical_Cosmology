@@ -1,0 +1,144 @@
+\begin{document}
+
+% --- TITLE BLOCK ---
+\noindent
+\begin{tabular}{@{}l}
+    \textbf{\Large ASTR6403P: Physical Cosmology} \\
+    \Large Homework Set 5 \\
+\end{tabular}
+\hfill % Pushes the following content to the right
+\begin{tabular}{@{}l}
+    \textbf{Name:} {\it Hongfei Yu} \\
+    \textbf{ID:} PB23020640 \\
+    \textbf{Date:} \today \\
+\end{tabular}
+
+% A horizontal line to separate the header from the content
+\vspace{0.5cm}
+\hrule
+\vspace{1cm}
+
+
+%=================================================
+% HOMEWORK QUESTIONS
+%=================================================
+\section*{Question 1}
+Express the slow-roll parameters $\epsilon$ and $\eta$ in terms of the potential $V$ and its derivatives with respect to $\phi$. By utilizing the Friedmann equation and the equation of motion for the scalar field, show that, to lowest order, $\epsilon \equiv \frac{1}{16\pi G} \left( \frac{V'}{V} \right)^2$ and $\eta \equiv \epsilon - \frac{1}{8\pi G} \frac{V''}{V}$, where primes denote derivatives with respect to $\phi$ evaluated at $\phi^{(0)}$.
+
+\begin{solution} 
+The slow-roll parameters $\epsilon$ and $\eta$ are defined in terms of the Hubble parameter $H$ and the scalar field $\phi$ as follows:
+\[ \epsilon = -\frac{\dot{H}}{H^2}, \quad \eta = \frac{\ddot{\phi}}{H\dot{\phi}}. \]
+Using the Friedmann equation
+\[ H^2 = \frac{8\pi G}{3} \left( \frac{1}{2} \dot{\phi}^2 + V(\phi) \right), \]
+and the equation of motion for the scalar field
+\[ \ddot{\phi} + 3H\dot{\phi} + V'(\phi) = 0, \]
+we can express $\epsilon$ and $\eta$ in terms of the potential $V$ and its derivatives.
+First, we compute $\dot{H}$:
+\[ 2H\dot{H} = \frac{8\pi G}{3} \left( \dot{\phi}\ddot{\phi} + V'(\phi)\dot{\phi} \right). \]
+Substituting the equation of motion for $\ddot{\phi}$, we get
+\[ 2H\dot{H} = \frac{8\pi G}{3} \left( \dot{\phi}(-3H\dot{\phi} - V'(\phi)) + V'(\phi)\dot{\phi} \right) = -\frac{8\pi G}{3} 3H\dot{\phi}^2. \]
+Thus,
+\[ \epsilon = -\frac{\dot{H}}{H^2} = \frac{4\pi G \dot{\phi}^2}{H^2}. \]
+Next, we express $\dot{\phi}$ in terms of $V$ using the slow-roll approximation, which gives
+\[ 3H\dot{\phi} \approx -V'(\phi) \implies \dot{\phi} \approx -\frac{V'(\phi)}{3H}. \]
+Substituting this into the expression for $\epsilon$, we have
+\[ \epsilon = \frac{4\pi G}{H^2} \left(-\frac{V'(\phi)}{3H}\right)^2 = \frac{4\pi G}{9H^4} V'^2(\phi). \]
+Using the Friedmann equation to express $H^2$ in terms of $V$, we find
+\[ H^2 \approx \frac{8\pi G}{3} V(\phi), \]
+which leads to
+\[ \epsilon = \frac{1}{16\pi G} \left( \frac{V'(\phi)}{V(\phi)} \right)^2. \]
+For $\eta$, we have
+\[ \eta = \frac{\ddot{\phi}}{H\dot{\phi}}. \]
+Using the equation of motion for $\ddot{\phi}$, we get
+\[ \eta = \frac{-3H\dot{\phi} - V'(\phi)}{H\dot{\phi}} = -3 - \frac{V'(\phi)}{H\dot{\phi}}. \]
+Substituting the slow-roll approximation for $\dot{\phi}$, we find
+\[ \eta = -3 + \frac{V'(\phi)}{H \left(-\frac{V'(\phi)}{3H}\right)} = -3 + \frac{3H^2}{V'(\phi)}. \]
+Using the Friedmann equation again, we can express this as
+\[ \eta = -3 + \frac{3 \left(\frac{8\pi G}{3} V(\phi)\right)}{V'(\phi)} = -3 + \frac{8\pi G V(\phi)}{V'(\phi)}. \]
+Finally, we can express $\eta$ in terms of $V''(\phi)$:
+\[ \eta = \epsilon - \frac{1}{8\pi G} \frac{V''(\phi)}{V(\phi)}. \]
+\end{solution}
+
+\hrule
+\section*{Question 2}
+Show that the curvature in conformal Newtonian gauge is equal to $4k^2\Phi/a^2$. To do this, compute the three-dimensional Ricci scalar arising from the spatial part of the metric $g_{ij} = \delta_{ij} a^2 (1+2\Phi)$.
+
+\begin{solution} 
+The spatial part of the metric in conformal Newtonian gauge is given by
+\[ g_{ij} = a^2 (1 + 2\Phi) \delta _{ij}. \]
+To compute the three-dimensional Ricci scalar \( R^{(3)} \), we first need to calculate the Christoffel symbols for the spatial metric. The Christoffel symbols are given by
+\[ \Gamma^k_{ij} = \frac{1}{2} g^{kl} \left( \partial_i g_{jl} + \partial_j g_{il} - \partial_l g_{ij} \right). \]
+Calculating the derivatives, we find
+\[ \partial_i g_{jl} = 2 a^2 \delta_{jl} \partial_i \Phi, \]
+and similarly for the other terms. Substituting these into the expression for the Christoffel symbols, we get
+\[ \Gamma^k_{ij} = \delta^{kl} \left( \delta_{jl} \partial_i \Phi + \delta_{il} \partial_j \Phi - \delta_{ij} \partial_l \Phi \right). \]
+Next, we compute the Ricci tensor \( R_{ij} \) using the formula
+\[ R_{ij} = \partial_k \Gamma^k_{ij} - \partial_j \Gamma^k_{ik} + \Gamma^k_{ij} \Gamma^l_{kl} - \Gamma^l_{ik} \Gamma^k_{jl}= -2 a^2 \delta_{ij} \nabla^2 \Phi. \]
+Finally, the Ricci scalar \( R^{(3)} \) is obtained by contracting the Ricci tensor with the inverse metric:
+\[ R^{(3)} = g^{ij} R_{ij} = \frac{1}{a^2 (1 + 2\Phi)} (-2 a^2 \nabla^2 \Phi) = -\frac{2 \nabla^2 \Phi}{1 + 2\Phi}\approx -2 \nabla^2 \Phi. \]
+In Fourier space, we find
+\[ R^{(3)} \approx \dfrac{2 k^2 \Phi}{a^2}. \]
+Thus, the curvature in conformal Newtonian gauge is given by
+\[ \kappa = \frac{4 k^2 \Phi}{a^2}. \]
+\end{solution}
+
+
+\hrule
+\section*{Question 3}
+One way to characterize the amplitude of matter fluctuations on a particular scale is to compute the expected root mean square (RMS) overdensity in a sphere of comoving radius $R$, $\sigma_R^2 \equiv \langle \delta_{m,R}^2(\vec{x}) \rangle$. Here
+$$ \delta_{m,R}(\vec{x}) = \int d^3x' \delta_m(\vec{x}') W_R(|\vec{x}-\vec{x}'|) , $$
+where $W_R(x)$ is the tophat window function, equal to $3/(4\pi R^3)$ for $x<R$ and 0 otherwise; the angular brackets denote the ensemble average.
+\begin{enumerate}
+    \item[(a)] By Fourier transforming, express $\sigma_R^2$ in terms of an integral over the power spectrum.
+
+    % \textit{Solution:}
+    % Your solution for part (a) here.
+
+    \vspace{0.5cm}
+    \item[(b)] Choose the integration variable as $\ln k$, and plot the corresponding integrand for $\sigma_8$ ($R=8~h^{-1}$ Mpc) at redshift 0 in a standard CDM model ($\Omega_m = 1$, with other parameters set at $h=0.7, n_s=1, A_s = 2.1 \times 10^{-9}$). For simplicity, use the BBKS transfer function here.
+
+    % \textit{Solution:}
+    % Your solution for part (b) here.
+\end{enumerate}
+
+\begin{solution} 
+\begin{itemize}
+    \item [(a)] 
+    The Fourier transform of the smoothed overdensity $\delta_{m,R}(\vec{x})$ is given by
+    \[ \delta_{m,R}(\vec{k}) = \delta_m(\vec{k}) W_R(k), \]
+    where $W_R(k)$ is the Fourier transform of the tophat window function. The variance $\sigma_R^2$ can then be expressed as
+    \begin{align*}
+        \sigma_R^2& :=\ag{\delta^2_{m,R}(\vec{x})}= \int_{\vec{k}_1}\int_{\vec{k}_2} \ag{\delta_{m,R}(\vec{k}_1)\delta_{m,R}(\vec{k}_2)}\me^{\mi(\vec{k}_1+\vec{k}_2)\cdot\vec{x}}\\
+        & = \int_{\vec{k}_1}\int_{\vec{k}_2} \ag{\delta(\vec{k}_1)\delta(\vec{k}_2)}W_R(\vec{k}_1)W_R(\vec{k}_2)\me^{\mi(\vec{k}_1+\vec{k}_2)\cdot\vec{x}}\\
+        & = \int_{\vec{k}_1}\int_{\vec{k}_2}(2\pi)^3 P(k_1)\delta^D(\vec{k}_1+\vec{k}_2) W_R(\vec{k}_1)W_R(\vec{k}_2)\me^{\mi(\vec{k}_1+\vec{k}_2)\cdot\vec{x}}\\
+        & = \int\dfrac{\dd^3 k}{(2\pi)^3} P(k)W_R^2(k) \\
+        & = \int\dfrac{\dd k}{k}\Delta^2(k)W_R^2(k)
+    \end{align*}
+    where $P(k)$ is the matter power spectrum.
+    \item [(b)] 
+    \[
+        \sigma_8^2 = \int \dd \ln k \Delta^2(k) \left(\dfrac{3j_1(8k)}{8k}\right)^2,
+    \]
+    here $j_1$ is the spherical Bessel function of the first kind. The primordial power spectrum is given by
+    \[
+        P_0 = A_s\left(\dfrac{k}{k_*}\right)^{n_s-1} = A_s = 2.1 \times 10^{-9}.
+    \]
+    The BBKS transfer function is given by
+    \[
+        T(q) = \dfrac{\ln(1+2.34q)}{2.34q}\left[1+3.89q+(16.1q)^2+(5.46q)^3+(6.71q)^4\right]^{-1/4},
+    \]
+    where $q = k/h^2$ for $\Omega_{\rm m} =1$. The matter power spectrum is then
+    \[
+        P(k) = \dfrac{8\pi^2}{25} \dfrac{k}{H_0^4 \Omega_m^2} P_0 T^2(k) D_+^2(z),
+    \]
+    where $D_+(z) = 1/(1+z)$ when $\Omega_{\rm m}=1$. Finally, $\Delta(k)\Big|_{z=0}$ is given by
+    \[
+        \Delta(k) = \dfrac{k^3 P(k)}{2\pi^2} = \dfrac{4k^4}{25 H_0^4} A_s T^2(k).
+    \]
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{hw5q3.png}
+    \end{center}
+\end{itemize} 
+\end{solution}
+
+\end{document}

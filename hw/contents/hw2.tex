@@ -1,0 +1,90 @@
+\begin{document}
+
+% --- TITLE BLOCK ---
+\noindent
+\begin{tabular}{@{}l}
+    \textbf{\Large ASTR6403P: Physical Cosmology} \\
+    \Large Homework Set 2 \\
+\end{tabular}
+\hfill % Pushes the following content to the right
+\begin{tabular}{@{}l}
+    \textbf{Name:} {\it Hongfei Yu} \\
+    \textbf{ID:} PB23020640 \\
+    \textbf{Date:} \today \\
+\end{tabular}
+
+% A horizontal line to separate the header from the content
+\vspace{0.5cm}
+\hrule
+\vspace{1cm}
+
+
+%=================================================
+% HOMEWORK QUESTIONS
+%=================================================
+\section*{Question 1}
+Starting from the Fermi-Dirac distribution, show that the number density of one generation of neutrinos and anti-neutrinos in the Universe today is $n_{\nu} = \dfrac{3}{11}n_{\gamma} = 113/\text{cm}^3$. For this calculation, you will also have to compute the photon number density; both can be expressed in terms of Riemann zeta functions (Eq.C.29 of the textbook).
+
+\begin{solution}
+The Fermi-Dirac distribution of the neutrinos:
+\[n_\nu = g\int\frac{\dd^3 p}{(2\pi)^3} \frac{1}{e^{(E/T)} + 1} = \frac{g}{2\pi^2}\int_0^\infty \frac{p^2\dd p}{e^{(p/T)} + 1} = \frac{3}{2}\frac{\zeta(3)}{\pi^2}T_\nu^3.\]
+Here, \(g\) is the degeneracy factor, which is 6 for neutrinos (3 flavors, each with two helicity states). The photon number density is given by
+\[n_{\gamma} = \frac{2\zeta(3)}{\pi^2} T_\gamma^3.\]
+Using the relation between neutrino and photon temperature $T_\nu = \left(\dfrac{4}{11}\right)^{\frac{1}{3}}T_\gamma$, we find:
+\[n_{\nu} = \frac{3}{4}\left(\frac{T_\nu}{T_\gamma}\right)^3 n_\nu = \frac{3}{11} n_{\gamma} = \frac{3}{11} \cdot \frac{2\zeta(3)}{\pi^2} \left(\frac{kT_\gamma}{\hbar c}\right)^3.\]
+Substituting CMB temperature \(T_\gamma \approx 2.7 \text{ K}\), we find:
+\[n_{\nu} \approx 113/\text{cm}^3.\]
+\end{solution}
+
+
+\hrule
+\section*{Question 2}
+Determine the baryon-to-photon ratio $\eta_b = n_b/n_\gamma$ in terms $\Omega_b h^2$.
+\begin{solution}
+As we have derived \(n_\gamma = \frac{11}{3}n_\nu = 414/\text{cm}^3\), we only need to calculate $n_b$ to get $\eta_b$. Using the critical density:
+\[
+    \Omega_b \rho_{\text{cr}}= {n_bm_p}\Rightarrow n_b = \frac{\Omega_b \rho_{\text{cr}}}{m_p} = \frac{3\Omega_b h^2 \cdot (100 \text{ km s}^{-1} \text{ Mpc}^{-1})^2}{8\pi G m_p} \approx 1.12 \times 10^{-5} \Omega_b h^2 \text{ cm}^{-3}.
+\]
+Finally, substituting $n_b$ and $n_\gamma$:
+\[
+    \eta_b = \frac{n_b}{n_\gamma} \approx 2.7 \times 10^{-8} \Omega_b h^2.
+\]
+\end{solution}
+
+\hrule
+\section*{Question 3}
+Suppose that there were no baryon asymmetry so that the number density of baryons exactly equaled that of anti-baryons. Starting from the relic abundance for annihilating heavy particles which we have derived in class ($Y_\infty \simeq x_f/\lambda$), estimate the final proton-to-photon number density $n_p/n_\gamma$. For protons, the thermally-averaged cross-section is $\langle \sigma v \rangle \simeq 100 \text{ GeV}^{-2}$, the freeze-out temperature is $T_f \simeq 20\text{ MeV}$, and proton mass is $m \simeq 1\text{ GeV}$.
+\begin{solution}
+First, we calculate \(x_f\):
+\[x_f = \frac{m}{T_f} = \frac{1 \text{ GeV}}{20 \text{ MeV}} = 50.\]
+Next, we calculate \(\lambda\):
+\[\lambda = \frac{g m^3 \langle \sigma v \rangle}{(2\pi)^{3/2} H(T_f)}.\]
+Assuming \(g = 2\) for protons and using the Hubble parameter at freeze-out temperature, we find:
+\[\lambda \approx \frac{2 \cdot (1 \text{ GeV})^3 \cdot 100 \text{ GeV}^{-2}}{(2\pi)^{3/2} \cdot H(T_f)}.\]
+Using the relation for \(Y_\infty\):
+\[Y_\infty \simeq \frac{x_f}{\lambda},\]
+we can estimate the final proton-to-photon number density:
+\[\frac{n_p}{n_\gamma} \approx Y_\infty \cdot n_\gamma \approx \frac{50}{\lambda} \cdot n_\gamma.\]
+Substituting the values, we find:
+\[\frac{n_p}{n_\gamma} \approx 10^{-18},\]
+which is much less than the observed result calculated in Question 2, indicating that without baryon asymmetry, protons and anti-protons would have annihilated to negligible levels.
+\end{solution}
+
+
+\hrule
+\section*{Question 4}
+Find an approximation to the freeze-out temperature of annihilating WIMP particles by setting $x_f$ such that $n^{(0)}(x_f)\langle \sigma v \rangle = H(x_f)$.
+\begin{solution}
+    We start with the expression for the number density of non-relativistic particles:
+    \[n^{(0)}(x) = g\left(\frac{m^2}{2\pi x_f}\right)^{\frac{3}{2}} e^{-x_f},\]
+    where $x_f = \frac{m}{T}$. The Hubble parameter is given by:
+    \[H(x) = \sqrt{\frac{8\pi G}{3}} \rho^{\frac{1}{2}} = \sqrt{\frac{8\pi G}{3}} \left(\frac{\pi^2}{30} g_* \frac{m^4}{x_f^4}\right)^{\frac{1}{2}}.\]
+    Setting \(n^{(0)}(x_f)\langle \sigma_v \rangle = H(x_f)\), we can solve for the freeze-out temperature \(T_f\). Rearranging the equation gives:
+    \[g\left(\frac{m^2}{2\pi x_f}\right)^{\frac{3}{2}} e^{-x_f}  \langle \sigma v \rangle = \sqrt{\frac{8\pi G}{3}} \left(\frac{\pi^2}{30} g_* \frac{m^4}{x_f^4}\right)^{\frac{1}{2}}.\]
+    So the freeze-out temperature \(T_f = \frac{m}{x_f}\) where $x_f$ satisfies:
+    \[
+        \sqrt{x_f}e^{-x_f} = \sqrt{\frac{8\pi^3 G g_*}{90}} \frac{m}{g \langle \sigma v \rangle}.
+    \]
+\end{solution}
+
+\end{document}

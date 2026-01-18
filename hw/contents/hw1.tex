@@ -1,0 +1,435 @@
+\begin{document}
+
+
+\noindent
+\begin{tabular}{@{}l}
+    \textbf{\Large ASTR6403P: Physical Cosmology} \\
+    \Large Homework Set 1 \\
+\end{tabular}
+\hfill 
+\begin{tabular}{@{}l}
+    \textbf{Name:} {\it Hongfei Yu} \\
+    \textbf{ID:} PB23020640 \\
+    \textbf{Date:} \today \\
+\end{tabular}
+
+
+\vspace{0.5cm}
+\hrule
+\vspace{1cm}
+
+\section*{Question 1}
+Convert the following quantities by inserting the appropriate factors of $c, \hbar$ and $k_B$:
+\begin{enumerate}
+    \item[i)] $T_0 = 2.725 \text{K} \to \text{eV}$
+    
+    \begin{solution}
+    \begin{align*}
+        T_0 = k_{\rm B}T_0 & = 1.381\times 10^{-23} \rm{J\cdot K^{-1}} \times 2.725 \rm{K}\\
+        & = 3.762 \times 10^{-23} \rm{J} \times 6.252 \times 10^{18} \rm{eV/J} \\
+        &= 2.348 \times 10^{-5} \rm{eV}.
+    \end{align*}
+\end{solution}
+    
+    \vspace{0.5cm}
+    \item[ii)] $\rho_\gamma = \pi^2 T_0^4 / 15 \to \text{eV}^4 \text{ and } \text{g cm}^{-3}$
+
+    \begin{solution}
+    \begin{align*}
+        \rho_{\gamma}& = \dfrac{\pi^2T_0^4}{15}  = \dfrac{\pi^2}{15} (2.348\times 10^{-5}\rm{eV})^4 \\
+        & = 2.000 \times 10^{-14} \rm{eV}^4\\
+        & = 2.000 \times 10^{-14} \rm{eV}^4 \times (5.068 \times 10^4 \rm{cm^{-1}\cdot eV^{-1}})^3 \times 1.783 \times 10^{-33} \rm{g\cdot eV^{-1}}\\
+        & = 4.642\times 10^{-33}\rm{g\cdot cm^{-3}}.
+    \end{align*}
+\end{solution}
+
+    \vspace{0.5cm}
+    \item[iii)] $1/H_0 \to \text{cm}$
+
+    \begin{solution}
+    \footnote{$H_0 = 67.4\pm 0.5 \rm{km\cdot s^{-1}\cdot Mpc^{-1}}$ from Planck 2018 [\href{https://arxiv.org/abs/1807.06209}{1807.06209}].}
+    \begin{align*}
+        \dfrac{1}{H_0} &= \dfrac{1}{67.4 \rm{km\cdot s^{-1}\cdot Mpc^{-1}}}\\
+        & = \dfrac{3\times 10^{8}\rm{m\cdot s^{-1}}}{67.4 \times 10^3 \rm{m\cdot sec^{-1}}}\times 3.086 \times 10^{24}\rm{cm} = 1.374\times 10^{29}\rm{cm}.
+    \end{align*}
+    \end{solution}
+
+    \vspace{0.5cm}
+    \item[iv)] $m_{Pl} = 1.2 \times 10^{19} \text{GeV} \to \text{K, cm}^{-1}, \text{ sec}^{-1}$
+
+    \begin{solution}
+    \begin{align*}
+        m_{Pl} = \dfrac{m_{Pl}}{k_B} & = \dfrac{1.2 \times 10^{19} \rm{GeV}}{1.381\times 10^{-23}\rm{J\cdot K^{-1}}}\\
+        & = 8.689 \times 10^{50} \rm{K}\\
+        & = 1.2 \times 10^{19} \rm{GeV} \times 5.068 \times 10^4 \rm{cm^{-1}\cdot eV^{-1}}  = 6.082 \times 10^{32} \rm{cm}^{-1}\\
+        & = 6.082 \times 10^{32} \rm{cm}^{-1} \times 3\times 10^{10} \rm{cm\cdot sec^{-1}} = 1.824 \times 10^{43} \rm{sec}^{-1}.
+    \end{align*}
+    \end{solution}
+\end{enumerate}
+
+\hrule
+\section*{Question 2}
+Calculate the Christoffel symbols for flat 2-dimensional space with polar coordinates, obtain the geodesic equation for a freely moving particle, and show the trajectory is as expected.
+
+\begin{solution}
+\[
+    \Gamma^k_{\ ij} = \frac{ g^{kl}}{2} \left( \partial_i g_{jl} + \partial_j g_{il} - \partial_l g_{ij} \right).
+\]
+The metric in 2-D polar coordinates $(r,\theta)$ is:
+\[
+    g_{rr} = 1, \quad g_{\theta\theta } = r^2, \quad g_{r\theta} = g_{\theta r} = 0.
+\]
+and their inverses:
+\[
+    g^{rr} = 1, \quad g^{\theta\theta} = \dfrac{1}{r^2}, \quad g^{r\theta} = g^{\theta r} = 0.
+\]
+Then:
+\[
+    \Gamma^r_{\ rr }=\dfrac{g^{rr}}{2}(\pp_{r} g_{rr}+\pp_{r} g_{rr}-\pp_{r} g_{rr})=0,
+\]\[
+    \Gamma^{r}_{\ r\theta} = \Gamma^r_{\ \theta r} = \dfrac{g^{rr}}{2}(\pp_{\theta} g_{rr})= 0,
+\]
+\[
+    \Gamma^r_{\ \theta\theta }=\dfrac{g^{rr}}{2}(-\pp_{r} g_{\theta\theta})=-r,
+\]
+\[
+    \Gamma^{\theta}_{\ rr} = \dfrac{g^{\theta\theta}}{2}(2\pp_r g_{\theta r}-\pp_\theta g_{rr})=0,
+\]
+\[
+    \Gamma^{\theta}_{\ r\theta} = \Gamma^{\theta}_{\theta r} = \dfrac{g^{\theta\theta}}{2}(\pp_r g_{\theta\theta})=\dfrac{1}{r},
+\]
+\[
+    \Gamma^\theta_{\ \theta\theta} = \dfrac{g^{\theta\theta}}{2}(\pp_\theta g_{\theta\theta})=0.
+\]
+
+The geodesic equations are:
+\[
+    \dfrac{\dd^2 x^i}{\dd \lambda^2} + \Gamma^i_{\ jk} \dfrac{\dd x^j}{\dd \lambda} \dfrac{\dd x^k}{\dd \lambda} = 0.
+\]
+Consider $\lambda = t$, for $i=r$:
+\[
+    \ddot{r} - r\dot{\theta}^2 = 0,
+\]
+for $i = \theta$:
+\[
+    \ddot{\theta} + \dfrac{2}{r}\dot{r}\dot{\theta} = 0.
+\]
+These are exactly the equations of motion in polar coordinates in classical mechanics, as expected.
+\end{solution}
+
+\hrule
+\section*{Question 3}
+In class, we have derived how the energy of a massless particle changes in a flat expanding Universe. Repeat the calculation for a massive non-relativistic particle and find how its energy changes.
+
+\begin{solution}
+We consider a parameter $\lambda$ which satisfies:
+\[
+    P^\mu = \dfrac{\dd x^\mu}{\dd \lambda},
+\]
+and $\dfrac{\dd }{\dd \lambda} = \dfrac{\dd x^0}{\dd \lambda}\dfrac{\dd }{\dd x^0} = E\dfrac{\dd }{\dd t}$. Then in FLRW metric, with $\Gamma^0 _{\ ij} = a\dot{a}\delta_{ij}$, we have:
+\[
+    E\dfrac{\dd E}{\dd t} = -\Gamma^0_{\ ij} P^i P^j = -a\dot{a}\delta_{ij} P^i P^j.
+\]
+For a massive non-relativistic particle, we have mass-shell condition:
+\[
+    P^\mu P_\mu = -E^2 + a^2\delta_{ij}P^iP^j = -m^2,
+\]
+then the evolution of energy is:
+\[
+    E\dfrac{\dd E}{\dd t} =-a\dot{a}\delta_{ij} P^i P^j = -\dfrac{\dot{a}}{a}(E^2-m^2).
+\]
+the solution is:
+\[
+    E^2 - m^2 \propto a^{-2}.
+\]
+\end{solution}
+
+\hrule
+\newpage
+\section*{Question 4}
+Consider a galaxy of physical size 5 kpc. What angle would this galaxy subtend if situated at redshift $0.1$? redshift $1$? Do the calculation in a flat Universe, first matter-dominated and then with 30\% matter and 70\% cosmological constant.
+
+\begin{solution}
+    The angle subtended in a flat Universe is:
+    \[
+        \theta = \dfrac{l/a}{\chi(a)} = \dfrac{l(1+z)}{c\displaystyle\int_0^z \dfrac{\dd z'}{H(z')}},
+    \]
+    then use Friedmann Equation 
+    \[H = \left[\dfrac{8\pi G}{3}\rho_{\mathrm{cr},0}\left(\Omega_{\mathrm{r}}(1+z)^4+\Omega_{\mathrm{m}}(1+z)^3+\Omega_{\mathrm{k}}(1+z)^2+\Omega_{\Lambda}\right)\right]^{\frac{1}{2}} \]
+
+    Finally, we can compute the angle for different redshifts:
+    \begin{align*}
+        \theta(z)& = l(1+z)\left\{c\int_0^z\left[\dfrac{8\pi G}{3}\rho_{\mathrm{cr},0}\left(\Omega_{\mathrm{r}}(1+z)^4+\Omega_{\mathrm{m}}(1+z)^3+\Omega_{\mathrm{k}}(1+z)^2+\Omega_{\Lambda}\right)\right]^{-\frac{1}{2}}\dd z  \right\}^{-1}\\
+        & = A(1+z)\left[\int_0^z\left(\Omega_{\mathrm{r}}(1+z)^4+\Omega_{\mathrm{m}}(1+z)^3+\Omega_{\mathrm{k}}(1+z)^2+\Omega_{\Lambda}\right)^{-\frac{1}{2}}\dd z  \right]^{-1}.
+    \end{align*}
+    where $A = \dfrac{l}{c}\left(\dfrac{8\pi G}{3}\rho_{\mathrm{cr},0}\right)^{\frac{1}{2}}$. 
+
+    Substitute $l = 5 \rm{kpc} = 1.542 \times 10^{22} \rm{cm}$, $\rho_{\mathrm{cr},0} = 1.878 \times 10^{-29} h^2 \rm{g\cdot cm^{-3}}$ and $h = 0.674$\footnote{$H_0 = 67.4\pm 0.5 \rm{km\cdot s^{-1}\cdot Mpc^{-1}}$ from Planck 2018 [\href{https://arxiv.org/abs/1807.06209}{1807.06209}].}, we have $A = 1.123\times 10^{-6}$.
+
+    And use {\tt Python} to calculate the angle for different cosmological parameters and redshifts (see the code in the Appendix):
+
+    \begin{itemize}
+        \item Matter-dominated Universe ($\Omega_{\mathrm{m}} = 1, \Omega_{\Lambda} = 0$): $\theta(0.1) = 2.73'', \theta(1) = 0.79''$.
+        \item $\Omega_{\mathrm{m}} = 0.3, \Omega_{\Lambda} = 0.7$: $\theta(0.1) = 2.60'', \theta(1) = 0.60''$.
+    \end{itemize}
+\end{solution}
+
+
+\hrule
+\newpage
+\section*{Question 5}
+Apply the Einstein equations to the case of non-flat Universe, with the space-time interval given by
+$$ ds^2 = -dt^2 + a^2(t) \left( \frac{dr^2}{1-kr^2} + r^2(d\theta^2 + \sin^2\theta d\phi^2) \right), $$
+where $r,\theta,\phi$ is the standard 3D spherical coordinates, and $k$ is a constant that describes the Universe's curvature. Calculate the Christoffel symbols, Ricci tensor and Ricci scalar. Then derive the Friedmann equation for non-flat Universe.
+
+\begin{solution}
+    The FLRW metric of non-flat Universe is:
+    \[
+        g_{tt} = -1, \quad g_{rr} = \dfrac{a^2}{1-kr^2}, \quad g_{\theta\theta} = a^2r^2, \quad g_{\phi\phi} = a^2r^2\sin^2\theta,
+    \]  
+    with their inverses:
+    \[
+        g^{tt} = -1, \quad g^{rr} = \dfrac{1-kr^2}{a^2}, \quad g^{\theta\theta} = \dfrac{1}{a^2r^2}, \quad g^{\phi\phi} = \dfrac{1}{a^2r^2\sin^2\theta}.
+    \]
+    and other components are zero. There're the non-zero components of Christoffel symbols. Ricci tensor and Ricci scalar (see Appendix for details) 
+
+    \textbf{Christoffel symbols:}
+    \begin{align*}
+        \Gamma^t_{\ rr} & = \dfrac{a\dot{a}}{1-kr^2}, \quad \Gamma^t_{\ \theta\theta} = a\dot{a}r^2, \quad \Gamma^t_{\ \phi\phi} = a\dot{a}r^2\sin^2\theta,\\
+        \Gamma^r_{\ tr} & = \Gamma^r_{\ rt} = \dfrac{\dot{a}}{a}, \quad \Gamma^r_{\ rr} = \dfrac{kr}{1-kr^2}, \quad \Gamma^r_{\ \theta\theta} = -r(1-kr^2), \quad \Gamma^r_{\ \phi\phi} = -r(1-kr^2)\sin^2\theta,\\
+        \Gamma^\theta_{\ t\theta} & = \Gamma^\theta_{\ \theta t} = \dfrac{\dot{a}}{a}, \quad \Gamma^\theta_{\ r\theta} = \Gamma^\theta_{\ \theta r} = \dfrac{1}{r}, \quad \Gamma^\theta_{\ \phi\phi} = -\sin\theta\cos\theta,\\
+        \Gamma^\phi_{\ t\phi} & = \Gamma^\phi_{\ \phi t} = \dfrac{\dot{a}}{a}, \quad \Gamma^\phi_{\ r\phi} = \Gamma^\phi_{\ \phi r} = \dfrac{1}{r}, \quad \Gamma^\phi_{\ \theta\phi} = \Gamma^\phi_{\ \phi\theta} = \dfrac{\cos\theta}{\sin\theta}.
+    \end{align*}
+
+    \textbf{Ricci tensor:}
+    \begin{align*}
+        R_{tt} & = -3\dfrac{\ddot{a}}{a},\\
+        R_{rr} & = \dfrac{a\ddot{a}+2\dot{a}^2+2k}{1-kr^2},\\
+        R_{\theta\theta} & = r^2(a\ddot{a}+2\dot{a}^2+2k),\\
+        R_{\phi\phi} & = r^2\sin^2\theta(a\ddot{a}+2\dot{a}^2+2k).
+    \end{align*}
+
+    \textbf{Ricci scalar:}
+    \begin{align*}
+        R = 6\left(\dfrac{\ddot{a}}{a} + \dfrac{\dot{a}^2}{a^2} + \dfrac{k}{a^2}\right).
+    \end{align*}
+
+    Then we can derive the Friedmann equation for non-flat Universe. The Einstein equations are:
+    \[
+        R_{\mu\nu} - \dfrac{1}{2}g_{\mu\nu}R = 8\pi G T_{\mu\nu}.
+    \]
+    For $\mu = \nu = t$, we have:
+    \[
+        R_{tt} - \dfrac{1}{2}g_{tt}R = -3\dfrac{\ddot{a}}{a} + 3\left(\dfrac{\ddot{a}}{a} + \dfrac{\dot{a}^2}{a^2} + \dfrac{k}{a^2}\right) = 3\left(\dfrac{\dot{a}^2}{a^2} + \dfrac{k}{a^2}\right) = 8\pi G \rho,
+    \]
+    where we have used $T_{tt} = \rho$. Then take $H = \dfrac{\dot{a}}{a}$, we have the Friedmann equation for non-flat Universe:
+    \[
+        H^2  = \dfrac{8\pi G}{3}\rho - \dfrac{k}{a^2}.
+    \]
+    we can also suppose the "energy density of curvature" $\rho_k = -\dfrac{3k}{8\pi Ga^2}$, then the Friedmann equation can be written as:
+    \[
+        H^2 = \dfrac{8\pi G}{3}(\rho + \rho_k).
+    \]
+\end{solution}
+
+\newpage
+\appendix
+\section{ Code for Question 4}
+\begin{lstlisting}
+import numpy as np
+from scipy import integrate
+
+
+def calculate_angle(z: float,  Omega_m: float, Omega_Lambda: float, Omega_r: float = 0, Omega_k: float = 0, l: float = 5, verbose: bool = False) -> float:
+    """
+    Calculate the angular size of a l kpc galaxy at redshift z
+    
+    Parameters:
+    z : Redshift
+    l : Physical size of the galaxy in kpc (default 5 kpc)
+    Omega : Density fraction parameter
+
+    Return:
+    Angular size
+    """
+
+    l_cm = l * 3.086e21 # cm
+    
+    # Physical constants
+    h = 0.674 # Planck 2018
+    G = 6.674e-8  # cm^3 g^-1 s^-2
+    C = 3e10  # cm/s
+    rho_crit0 = 1.878e-29 * h**2  # g cm^-3
+
+
+    A = l_cm * np.sqrt(8 * np.pi * G * rho_crit0 / 3) / C
+    if verbose:
+        print(f"A = {A:.3e} ")
+    
+    def integrand(z_prime):
+        factor = (Omega_r * (1 + z_prime)**4 + 
+                    Omega_m * (1 + z_prime)**3 + 
+                    Omega_k * (1 + z_prime)**2 + 
+                    Omega_Lambda)
+        return 1 / np.sqrt(factor)
+    integral_result, _ = integrate.quad(integrand, 0, z)
+    
+    theta_rad = A * (1 + z) / integral_result
+    
+    return theta_rad
+\end{lstlisting}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{hw1q4.png} 
+    \caption{The angle subtended by a galaxy of physical size 5 kpc at different redshifts in two cosmological models: matter-dominated Universe ($\Omega_{\mathrm{m}} = 1, \Omega_{\Lambda} = 0$) and $\Omega_{\mathrm{m}} = 0.3, \Omega_{\Lambda} = 0.7$.}
+    \label{fig:fig1}
+\end{figure}
+
+\section{ Calculation of Question 5}
+    \textbf{Christoffel symbols:}
+    \[
+        \Gamma^\lambda_{\ \mu\nu} = \dfrac{g^{\lambda\alpha}}{2}(\pp_\mu g_{\nu\alpha} + \pp_\nu g_{\mu\alpha} - \pp_\alpha g_{\mu\nu}).
+    \]
+    For $\lambda = t$, we have:
+    \[
+        \Gamma^t_{\ \mu\nu} = \dfrac{g^{t\alpha}}{2}(\pp_\mu g_{\nu \alpha} + \pp_\nu g_{\mu \alpha} - \pp_\alpha g_{\mu\nu}) = \dfrac{g^{tt}}{2}(\pp_\mu g_{\nu t} + \pp_\nu g_{\mu t} - \pp_t g_{\mu\nu})
+    \]
+    when $\mu = \nu = t$, $\Gamma^t_{\ tt} = 0$. When $\mu = \nu \neq t$, $\Gamma^t_{\ \mu\mu} = -\dfrac{g^{tt}}{2}\pp_t g_{\mu\mu}$, then $\Gamma^t_{\ rr} = \dfrac{a\dot{a}}{1-kr^2}, \Gamma^t_{\ \theta\theta} = a\dot{a}r^2, \Gamma^t_{\ \phi\phi} = a\dot{a}r^2\sin^2\theta$. Then consider $\mu = t, \nu\neq t$:
+    \[
+        \Gamma^t_{\ t\nu} = \dfrac{g^{tt}}{2}(\pp_t g_{\nu t} + \pp_\nu g_{tt} - \pp_t g_{t\nu}) = 0.
+    \]
+
+    For $\lambda = r$, we have:
+    \[
+        \Gamma^r_{\ \mu\nu} = \dfrac{g^{r\alpha}}{2}(\pp_\mu g_{\nu \alpha} + \pp_\nu g_{\mu \alpha} - \pp_\alpha g_{\mu\nu}) = \dfrac{g^{rr}}{2}(\pp_\mu g_{\nu r} + \pp_\nu g_{\mu r} - \pp_r g_{\mu\nu})
+    \]
+    when $\mu = \nu  = r$, $\Gamma^r_{\ rr} = \dfrac{g^{rr}}{2}\pp_r g_{rr} = \dfrac{kr}{1-kr^2}$. When $\mu = \nu \neq r$, $\Gamma^t_{\ \mu\mu} = -\dfrac{g^{rr}}{2}\pp_r g_{\mu\mu}$, then $\Gamma^r_{\ tt} = 0, \Gamma^r_{\ \theta\theta} = -r(1-kr^2), \Gamma^r_{\ \phi\phi} = -r(1-kr^2)\sin^2\theta$. Then consider $\mu = r, \nu\neq r$:
+    \[
+        \Gamma^r_{\ r\nu} = \dfrac{g^{rr}}{2}(\pp_r g_{\nu r} + \pp_\nu g_{rr} - \pp_r g_{r\nu}) = \dfrac{g^{rr}}{2}\pp_\nu g_{rr}.
+    \]
+    then $\Gamma^r_{\ rt} = \dfrac{\dot{a}}{a}, \Gamma^r_{\ r\theta} =\Gamma^r_{\ r\phi} = 0$.
+
+    For $\lambda = \theta$, we have:
+    \[
+        \Gamma^\theta_{\ \mu\nu} = \dfrac{g^{\theta\alpha}}{2}(\pp_\mu g_{\nu \alpha} + \pp_\nu g_{\mu \alpha} - \pp_\alpha g_{\mu\nu}) = \dfrac{g^{\theta\theta}}{2}(\pp_\mu g_{\nu \theta} + \pp_\nu g_{\mu \theta} - \pp_\theta g_{\mu\nu})
+    \]
+    when $\mu = \nu = \theta$, $\Gamma^\theta_{\ \theta\theta} = \dfrac{g^{\theta\theta}}{2}\pp_\theta g_{\theta\theta} = 0$. When $\mu = \nu \neq \theta$, $\Gamma^\theta_{\ \mu\mu} = -\dfrac{g^{\theta\theta}}{2}\pp_\theta g_{\mu\mu}$, then $\Gamma^\theta_{\ tt} = 0, \Gamma^\theta_{\ rr} = 0, \Gamma^\theta_{\ \phi\phi} = -\sin\theta\cos\theta$. Then consider $\mu = \theta, \nu\neq \theta$:
+    \[
+        \Gamma^\theta_{\ \theta\nu} = \dfrac{g^{\theta\theta}}{2}(\pp_\theta g_{\nu \theta} + \pp_\nu g_{\theta\theta} - \pp_\theta g_{\theta\nu}) = \dfrac{g^{\theta\theta}}{2}\pp_\nu g_{\theta\theta},
+    \]
+    then $\Gamma^\theta_{\ \theta t} = \dfrac{\dot{a}}{a}, \Gamma^\theta_{\ \theta r} = \dfrac{1}{r}, \Gamma^\theta_{\ \theta\phi} = 0$.
+
+    For $\lambda = \phi$, we have:
+    \[
+        \Gamma^\phi_{\ \mu\nu} = \dfrac{g^{\phi\alpha}}{2}(\pp_\mu g_{\nu \alpha} + \pp_\nu g_{\mu \alpha} - \pp_\alpha g_{\mu\nu}) = \dfrac{g^{\phi\phi}}{2}(\pp_\mu g_{\nu \phi} + \pp_\nu g_{\mu \phi} - \pp_\phi g_{\mu\nu})
+    \]
+    when $\mu = \nu = \phi$, $\Gamma^\phi_{\ \phi\phi} = \dfrac{g^{\phi\phi}}{2}\pp_\phi g_{\phi\phi} = 0$. When $\mu = \nu \neq \phi$, $\Gamma^\phi_{\ \mu\mu} = -\dfrac{g^{\phi\phi}}{2}\pp_\phi g_{\mu\mu}$, then $\Gamma^\phi_{\ tt} = 0, \Gamma^\phi_{\ rr} = 0, \Gamma^\phi_{\ \theta\theta} = 0$. Then consider $\mu = \phi, \nu\neq \phi$:
+    \[
+        \Gamma^\phi_{\ \phi\nu} = \dfrac{g^{\phi\phi}}{2}(\pp_\phi g_{\nu \phi} + \pp_\nu g_{\phi\phi} - \pp_\phi g_{\phi\nu}) = \dfrac{g^{\phi\phi}}{2}\pp_\nu g_{\phi\phi},
+    \]
+    then $\Gamma^\phi_{\ \phi t} = \dfrac{\dot{a}}{a}, \Gamma^\phi_{\ \phi r} = \dfrac{1}{r}, \Gamma^\phi_{\ \phi\theta} = \dfrac{\cos\theta}{\sin\theta}$.
+
+    \textbf{Ricci tensor:}
+    \[
+        R_{\mu\nu} = \pp_\lambda \Gamma^\lambda_{\ \mu\nu} - \pp_\nu \Gamma^\lambda_{\ \mu\lambda} + \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ \mu\nu} - \Gamma^\lambda_{\ \sigma\nu}\Gamma^\sigma_{\ \mu\lambda}.
+    \]
+    For $\mu = \nu = t$, we have:
+    \[
+        R_{tt} = \pp_\lambda \Gamma^\lambda_{\ tt} - \pp_t \Gamma^\lambda_{\ t\lambda} + \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ tt} - \Gamma^\lambda_{\ \sigma t}\Gamma^\sigma_{\ t\lambda}.
+    \]
+    The first term is zero since $\Gamma^\lambda_{\ tt} = 0$. The second term is:
+    \[
+        -\pp_t \Gamma^\lambda_{\ t\lambda} = -\pp_t(\Gamma^t_{\ tt} + \Gamma^r_{\ tr} + \Gamma^\theta_{\ t\theta} + \Gamma^\phi_{\ t\phi}) = -\pp_t\left(3\dfrac{\dot{a}}{a}\right) = -3\dfrac{\ddot{a}}{a} + 3\dfrac{\dot{a}^2}{a^2}.
+    \] The third term is zero since $\Gamma^\sigma_{\ tt} = 0$. The fourth term is:
+    \[
+        -\Gamma^\lambda_{\ \sigma t}\Gamma^\sigma_{\ t\lambda} = -(\Gamma^t_{\ tt}\Gamma^t_{\ tt} + \Gamma^r_{\ rt}\Gamma^r_{\ tr} + \Gamma^\theta_{\ \theta t}\Gamma^\theta_{\ t\theta} + \Gamma^\phi_{\ \phi t}\Gamma^\phi_{\ t\phi}) = -3\dfrac{\dot{a}^2}{a^2}.
+    \]
+    Then we have:
+    \[
+        R_{tt} = -3\dfrac{\ddot{a}}{a}.
+    \]
+
+    For $\mu = \nu = r$, we have:
+    \[
+        R_{rr} = \pp_\lambda \Gamma^\lambda_{\ rr} - \pp_r \Gamma^\lambda_{\ r\lambda} + \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ rr} - \Gamma^\lambda_{\ \sigma r}\Gamma^\sigma_{\ r\lambda}.
+    \]
+    The first term is:
+    \[
+        \pp_\lambda \Gamma^\lambda_{\ rr} = \pp_t \Gamma^t_{\ rr} + \pp_r \Gamma^r_{\ rr} + \pp_\theta \Gamma^\theta_{\ rr} + \pp_\phi \Gamma^\phi_{\ rr} = \pp_t \left(\dfrac{a\dot{a}}{1-kr^2}\right) + \pp_r\left(\dfrac{kr}{1-kr^2}\right) = \dfrac{a\ddot{a} + \dot{a}^2}{1-kr^2} + \dfrac{k(1+kr^2)}{(1-kr^2)^2}.
+    \] The second term is:
+    \[
+        -\pp_r \Gamma^\lambda_{\ r\lambda} = -\pp_r(\Gamma^t_{\ rt} + \Gamma^r_{\ rr} + \Gamma^\theta_{\ r\theta} + \Gamma^\phi_{\ r\phi}) = -\pp_r\left(\dfrac{\dot{a}}{a} + \dfrac{kr}{1-kr^2} + \dfrac{2}{r}\right) = -\dfrac{k(1+kr^2)}{(1-kr^2)^2} + \dfrac{2}{r^2}.
+    \] The third term is:
+    \[
+        \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ rr} = (\Gamma^t_{\ tt} + \Gamma^r_{\ rr} + \Gamma^\theta_{\ \theta\theta} + \Gamma^\phi_{\ \phi\phi})\Gamma^t_{\ rr} = 3\dfrac{\dot{a}}{a}\dfrac{a\dot{a}}{1-kr^2} = 3\dfrac{\dot{a}^2}{1-kr^2}.
+    \] The fourth term is:
+    \[
+        -\Gamma^\lambda_{\ \sigma r}\Gamma^\sigma_{\ r\lambda} = -(\Gamma^t_{\ tr}\Gamma^t_{\ rt} + \Gamma^r_{\ rr}\Gamma^r_{\ rr} + \Gamma^\theta_{\ \theta r}\Gamma^\theta_{\ r\theta} + \Gamma^\phi_{\ \phi r}\Gamma^\phi_{\ r\phi}) = -\left(\dfrac{\dot{a}^2}{a^2} + \dfrac{k^2r^2}{(1-kr^2)^2} + \dfrac{2}{r^2}\right).
+    \]
+    Then we have:
+    \[
+        R_{rr} = \dfrac{a\ddot{a} + 2\dot{a}^2 + 2k}{1-kr^2}.
+    \]
+
+    For $\mu = \nu = \theta$, we have:
+    \[
+        R_{\theta\theta} = \pp_\lambda \Gamma^\lambda_{\ \theta\theta} - \pp_\theta \Gamma^\lambda_{\ \theta\lambda} + \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ \theta\theta} - \Gamma^\lambda_{\ \sigma\theta}\Gamma^\sigma_{\ \theta\lambda}.
+    \]
+    The first term is:
+    \[
+        \pp_\lambda \Gamma^\lambda_{\ \theta\theta} = \pp_t     \Gamma^t_{\ \theta\theta} + \pp_r \Gamma^r_{\ \theta\theta} + \pp_\theta \Gamma^\theta_{\ \theta\theta} + \pp_\phi \Gamma^\phi_{\ \theta\theta} = \pp_t(a\dot{a}r^2) + \pp_r(-r(1-kr^2)) = r^2(a\ddot{a} + \dot{a}^2) + (3kr^2 - 1).
+    \] The second term is:
+    \[
+        -\pp_\theta \Gamma^\lambda_{\ \theta\lambda} = -\pp_\theta(\Gamma^t_{\ \theta t} + \Gamma^r_{\ \theta r} + \Gamma^\theta_{\ \theta\theta} + \Gamma^\phi_{\ \theta\phi}) = -\pp_\theta\left(\dfrac{\dot{a}}{a} + \dfrac{1}{r} + \dfrac{\cos\theta}{\sin\theta}\right) = -\dfrac{1}{\sin^2\theta}.
+    \] The third term is:
+    \[
+        \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ \theta\theta} = (\Gamma^t_{\ tt} + \Gamma^r_{\ rr} + \Gamma^\theta_{\ \theta\theta} + \Gamma^\phi_{\ \phi\phi})\Gamma^t_{\ \theta\theta} = 3\dfrac{\dot{a}}{a}a\dot{a}r^2 = 3\dot{a}^2r^2.
+    \] The fourth term is:
+    \[
+        -\Gamma^\lambda_{\ \sigma\theta}\Gamma^\sigma_{\ \theta\lambda} = -(\Gamma^t_{\ t\theta}\Gamma^t_{\ \theta t} + \Gamma^r_{\ r\theta}\Gamma^r_{\ \theta r} + \Gamma^\theta_{\ \theta\theta}\Gamma^\theta_{\ \theta\theta} + \Gamma^\phi_{\ \phi\theta}\Gamma^\phi_{\ \theta\phi}) = -\left(\dfrac{\dot{a}^2}{a^2} + \dfrac{1}{r^2} + \dfrac{\cos^2\theta}{\sin^2\theta}\right).
+    \]
+    Then we have:
+    \[
+        R_{\theta\theta} = r^2(a\ddot{a} + 2\dot{a}^2 + 2k).
+    \]
+
+    For $\mu = \nu = \phi$, we have:
+    \[
+        R_{\phi\phi} = \pp_\lambda \Gamma^\lambda_{\ \phi\phi} - \pp_\phi \Gamma^\lambda_{\ \phi\lambda} + \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ \phi\phi} - \Gamma^\lambda_{\ \sigma\phi}\Gamma^\sigma_{\ \phi\lambda}.
+    \]
+    The first term is:
+    \begin{align*}
+        \pp_\lambda \Gamma^\lambda_{\ \phi\phi} &= \pp_t \Gamma^t_{\ \phi\phi} + \pp_r \Gamma^r_{\ \phi\phi} + \pp_\theta \Gamma^\theta_{\ \phi\phi} + \pp_\phi \Gamma^\phi_{\ \phi\phi} \\
+        &= \pp_t(a\dot{a}r^2\sin^2\theta) + \pp_r(-r(1-kr^2)\sin^2\theta) + \pp_\theta(-\sin\theta\cos\theta) \\
+        &= r^2\sin^2\theta(a\ddot{a} + \dot{a}^2) + (3kr^2 - 1)\sin^2\theta.
+    \end{align*}
+    The second term is:
+    \begin{align*}
+        -\pp_\phi \Gamma^\lambda_{\ \phi\lambda} &= -\pp_\phi(\Gamma^t_{\ \phi t} + \Gamma^r_{\ \phi r} + \Gamma^\theta_{\ \phi\theta} + \Gamma^\phi_{\ \phi\phi})\\
+        & = -\pp_\phi\left(\dfrac{\dot{a}}{a} + \dfrac{1}{r} + \dfrac{\cos\theta}{\sin\theta}\right) = 0.
+    \end{align*}The third term is:
+    \[
+        \Gamma^\lambda_{\ \sigma\lambda}\Gamma^\sigma_{\ \phi\phi} = (\Gamma^t_{\ tt} + \Gamma^r_{\ rr} + \Gamma^\theta_{\ \theta\theta} + \Gamma^\phi_{\ \phi\phi})\Gamma^t_{\ \phi\phi} = 3\dfrac{\dot{a}}{a}a\dot{a}r^2\sin^2\theta = 3\dot{a}^2r^2\sin^2\theta.
+    \] The fourth term is:
+    \[
+        -\Gamma^\lambda_{\ \sigma\phi}\Gamma^\sigma_{\ \phi\lambda} = -(\Gamma^t_{\ t\phi}\Gamma^t_{\ \phi t} + \Gamma^r_{\ r\phi}\Gamma^r_{\ \phi r} + \Gamma^\theta_{\ \theta\phi}\Gamma^\theta_{\ \phi\theta} + \Gamma^\phi_{\ \phi\phi}\Gamma^\phi_{\ \phi\phi}) = -\left(\dfrac{\dot{a}^2}{a^2} + \dfrac{1}{r^2} + \dfrac{\cos^2\theta}{\sin^2\theta}\right).
+    \]
+    Then we have:
+    \[
+        R_{\phi\phi} = r^2\sin^2\theta(a\ddot{a} + 2\dot{a}^2 + 2k).
+    \]
+
+    \textbf{Ricci scalar:}
+    \[
+        R = g^{\mu\nu}R_{\mu\nu} = g^{tt}R_{tt} + g^{rr}R_{rr} + g^{\theta \theta}R_{\theta\theta} + g^{\phi\phi}R_{\phi\phi}.
+    \]
+    Substitute the components of metric and Ricci tensor, we have:
+    \[
+        R = -3\dfrac{\ddot{a}}{a} + \dfrac{1-kr^2}{a^2}\dfrac{a\ddot{a} + 2\dot{a}^2 + 2k}{1-kr^2} + \dfrac{1}{a^2r^2}r^2(a\ddot{a} + 2\dot{a}^2 + 2k) + \dfrac{1}{a^2r^2\sin^2\theta}r^2\sin^2\theta(a\ddot{a} + 2\dot{a}^2 + 2k).
+    \]
+    Then we have:
+    \[
+        R = 6\left(\dfrac{\ddot{a}}{a} + \dfrac{\dot{a}^2}{a^2} + \dfrac{k}{a^2}\right).
+    \]
+\end{document}

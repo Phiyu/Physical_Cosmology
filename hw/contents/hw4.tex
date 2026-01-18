@@ -1,0 +1,152 @@
+\begin{document}
+
+% --- TITLE BLOCK ---
+\noindent
+\begin{tabular}{@{}l}
+    \textbf{\Large ASTR6403P: Physical Cosmology} \\
+    \Large Homework Set 4 \\
+\end{tabular}
+\hfill % Pushes the following content to the right
+\begin{tabular}{@{}l}
+    \textbf{Name:} {\it Hongfei Yu} \\
+    \textbf{ID:} PB23020640 \\
+    \textbf{Date:} \today \\
+\end{tabular}
+
+% A horizontal line to separate the header from the content
+\vspace{0.5cm}
+\hrule
+\vspace{1cm}
+
+
+%=================================================
+% HOMEWORK QUESTIONS
+%=================================================
+\section*{Question 1}
+Use the $^1{}_2$ component of the Einstein equation to show that $h_{\times}$ obeys the same equation as does $h_+$.
+\begin{solution}
+    The $^1{}_2$ component of the Einstein equation in the context of gravitational waves can be expressed as:
+    \[
+        \delta G^1{}_2 = \delta^{1k}\left[\dfrac{3}{2}Hh^{\rm TT}_{k2,0}+\dfrac{h^{\rm TT}_{k2,00}}{2}+\dfrac{k^2}{2a^2}h^{\rm TT}_{k2}.\right]
+    \]
+    also like what we did for $h_{11}$, we consider $h^{\rm TT}_{12}= h^{\rm TT}_{21} = h_{\times}$, then we have
+    \[
+        \delta G^1{}_2 + \delta G^2{}_{1}= 3Hh_{\times,0}+h_{\times,00}+\dfrac{k^2}{a^2}h_{\times}=0.
+    \]
+    Similarly, we change to conformal time so that $h_{\times,0} = \dfrac{1}{a}h_{\times}'$ and $h_{\times,00} = \dfrac{1}{a^2}h_{\times}'' - \dfrac{a'}{a^3}h_{\times}'$, then we have
+    \[
+        h_{\times}'' + 2\dfrac{a'}{a}h_{\times}' + k^2 h_{\times} = 0,
+    \]
+    which is exactly the same as the equation for $h_+$.
+\end{solution}
+
+\hrule
+\section*{Question 2}
+In class, we have derived how the perturbation to the time-time component of the metric tensor $A$ changes under a general coordinate transformation. In this exercise, complete the derivation for the other three scalar perturbations to the metric, i.e., $\Psi, B, E$. Show that $\Phi_{\text{A}}$ and $\Phi_{\text{H}}$ as identified by Bardeen (1980) indeed do not change under a general coordinate transformation.
+\begin{solution}
+    Consider the general coordinate transformation
+    \[
+        \tilde{x}^0 = x^0 + \zeta, \quad \tilde{x}^i = x^i + \xi^{,i},
+    \]
+
+    For $\Psi$:
+    \[
+        \tilde{g}_{ij} = a^2\left[(1-2\tilde{\Psi})\delta_{ij} + 2\partial_i \partial_j \tilde{E}\right] = \dfrac{\partial \tilde{x}^{\alpha}}{\partial x^i}\dfrac{\partial \tilde{x}^{\beta}}{\partial x^j}g_{\alpha\beta}.
+    \]
+    Considering only first-order terms, we have
+    \[
+        -2a^2\tilde{\Psi}\delta_{ij} = -2a^2\Psi\delta_{ij} - 2a^2\dfrac{a'}{a}\delta_{ij}\zeta,
+    \]
+    so that
+    \[
+        \tilde{\Psi} = \Psi + \dfrac{a'}{a}\zeta.
+    \]  
+    For $B$:
+    \[
+        \tilde{g}_{0i} = -a^2\partial_i \tilde{B} = \dfrac{\partial \tilde{x}^{\alpha}}{\partial x^0}\dfrac{\partial \tilde{x}^{\beta}}{\partial x^i}g_{\alpha\beta}.
+    \]
+    Considering only first-order terms, we have
+    \[
+        -a^2\partial_i \tilde{B} = -a^2\partial_i B + a^2 \partial_i \zeta - a^2 \dfrac{a'}{a}\partial_i \xi,
+    \]
+    so that
+    \[
+        \tilde{B} = B - \zeta + \dfrac{a'}{a}\xi.
+    \]  
+    For $E$:
+    \[
+        \tilde{g}_{ij} = a^2\left[(1-2\tilde{\Psi})\delta_{ij} + 2\partial_i \partial_j \tilde{E}\right] = \dfrac{\partial \tilde{x}^{\alpha}}{\partial x^i}\dfrac{\partial \tilde{x}^{\beta}}{\partial x^j}g_{\alpha\beta}.
+    \]
+    Considering only first-order terms, we have
+    \[
+        2a^2\partial_i \partial_j \tilde{E} =   2a^2\partial_i \partial_j E - 2a^2 \partial_i \partial_j \xi,
+    \]
+    so that
+    \[
+        \tilde{E} = E - \xi.
+    \]  
+    Now we can check the gauge invariance of $\Phi_{\text{A}}$ and $\Phi_{\text{H}}$:
+    \begin{align*}
+        \tilde{\Phi}_{\text{A}}& = \tilde{A} - \dfrac{1}{a}\left[a(\tilde{B} - \tilde{E}')\right]\\
+        & = A - \zeta' - \dfrac{a'}{a}\zeta - \dfrac{1}{a}\left[a\left(B - \zeta + \dfrac{a'}{a}\xi - (E' - \xi')\right)\right]'\\
+        & = A - \dfrac{1}{a}\left[a(B - E')\right] = \Phi_{\text{A}},
+    \end{align*}
+    and
+    \begin{align*}
+        \tilde{\Phi}_{\text{H}}& = \tilde{\Psi} + \dfrac{a'}{a}(\tilde{B} - \tilde{E}')\\
+        & = \Psi + \dfrac{a'}{a}\zeta + \dfrac{a'}{a}\left(B - \zeta + \dfrac{a'}{a}\xi - (E' - \xi')\right)\\
+        & = \Psi + \dfrac{a'}{a}(B - E') = \Phi_{\text{H}}.
+    \end{align*}
+\end{solution}
+
+
+\hrule
+\section*{Question 3}
+Inflation also solves the flatness problem, in addition to the horizon problem and generation of initial conditions for structure formation, which we will discuss in this exercise.
+\begin{enumerate}
+    \item[(a)] Suppose that $\Omega(t) \equiv \frac{8\pi G \rho(t)}{3H^2(t)}$ is equal to $0.3$ today, where $\rho$ counts the energy density in matter and radiation (ignore the cosmological constant). From the Friedmann equation for non-flat Universe that you have derived in previous exercises, plot $\Omega(t) - 1$ as a function of the scale factor. How close to 1 would $\Omega(t)$ have been back at the Planck epoch (assuming no inflation took place so that the scale factor at the Planck epoch was of order $10^{-32}$)? This fine-tuning of the initial conditions is the flatness problem.
+
+    % \textit{Solution:}
+    % Your solution for part (a) here.
+
+    \vspace{0.5cm}
+    \item[(b)] Now show that inflation solves the flatness problem. Extrapolate $\Omega(t) - 1$ back to the end of inflation, and then through 60 e-folds of inflation. What is $\Omega(t) - 1$ right before these 60 e-folds of inflation? This shows how inflation flattens space.
+
+    % \textit{Solution:}
+    % Your solution for part (b) here.
+\end{enumerate}
+
+\begin{solution}
+    \begin{itemize}
+        \item[(a)] The Friedmann equation for a non-flat Universe is given by
+        \[
+            H^2 = \dfrac{8\pi G}{3}\rho - \dfrac{k}{a^2},
+        \]
+        so that we have
+        \[
+            \Omega(t) - 1 = \dfrac{k}{a^2 H^2}.
+        \]
+        Consider $H^2 = H_0^2\left(\Omega_{m,0}a^{-3} + \Omega_{r,0}a^{-4} + \Omega_{k,0}a^{-2}\right)$, where $\Omega_{k,0} = 1 - \Omega_{m,0} - \Omega_{r,0}$, we have
+        \[
+            \Omega(t) - 1 = \dfrac{\Omega_{k,0}}{\Omega_{m,0}a^{-1} + \Omega_{r,0}a^{-2} + \Omega_{k,0}}.
+        \]
+
+
+        And we can see that at the Planck epoch ($a \sim 10^{-32}$), $\Omega(t) - 1 \sim -10^{-60}$, which means $\Omega(t)$ must be extremely close to 1 at that time.
+
+        \item[(b)] During the inflation, we think $H = const.$, so that 
+        \[
+            \Omega(t) - 1 = \dfrac{k}{a^2 H^2} \propto a^{-2}.
+        \]
+        Therefore, after 60 e-folds of inflation, we have
+        \[
+            \Omega(t_{\rm start}) - 1 = (\Omega(t_{\text{end}}) - 1)e^{120} \simeq 10^{-8}.
+        \]
+        So that before the 60 e-folds of inflation, we have $\Omega(t) - 1 $ change from $10^{-8}$ to $10^{-60}$ after inflation, which means inflation can effectively flatten the space.
+    \end{itemize}
+        \begin{center}
+        \includegraphics[width=0.8\textwidth]{hw4.png}
+    \end{center}
+\end{solution}
+
+\end{document}
